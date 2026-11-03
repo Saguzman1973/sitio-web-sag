@@ -7,8 +7,6 @@ add_action( 'after_setup_theme', function () {
 } );
 add_action( 'wp_enqueue_scripts', function () {
 	$v = wp_get_theme()->get( 'Version' );
-	wp_enqueue_style( 'sag-fonts', 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap', array(), null );
-	wp_enqueue_style( 'sag-style', get_stylesheet_uri(), array( 'sag-fonts' ), $v );
+	wp_enqueue_style( 'sag-style', get_template_directory_uri() . '/assets/styles.css', array(), $v );
 	wp_enqueue_script( 'sag-main', get_template_directory_uri() . '/assets/main.js', array(), $v, true );
 } );
-add_filter( 'language_attributes', function ( $out ) { return $out . ' class="no-js"'; } );

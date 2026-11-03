@@ -2,112 +2,278 @@
 /* SAG Assessment & Consulting | Auditoría forense en Colombia — plantilla generada. Se aplica automáticamente a la página de inicio. */
 get_header(); ?>
 
-<section class="hero dark">
-  <canvas id="evidence" aria-hidden="true"></canvas>
+<section class="hero" id="inicio">
+  <div class="hero__bg" aria-hidden="true">
+    <img class="hero__poster" src="<?php echo esc_url( get_template_directory_uri() . '/assets/video/hero-bg-poster.webp' ); ?>" alt="" width="1280" height="720">
+    <video class="hero__vid" id="hero-vid-a" muted playsinline preload="none" data-src="<?php echo esc_url( get_template_directory_uri() . '/assets/video/hero-bg.mp4' ); ?>"></video>
+    <video class="hero__vid" id="hero-vid-b" muted playsinline preload="none" data-src="<?php echo esc_url( get_template_directory_uri() . '/assets/video/hero-bg.mp4' ); ?>"></video>
+    <div class="hero__veil"></div>
+  </div>
+  <canvas class="hero__net" id="net" aria-hidden="true"></canvas>
+  <div class="hero__aura hero__aura--a" aria-hidden="true"></div>
+  <div class="hero__aura hero__aura--b" aria-hidden="true"></div>
+  <div class="hero__lines" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="lbl lbl--cy reveal">Consultoría forense · Colombia</p>
+      <h1 class="hero__title" aria-label="Del dato al hecho. Del hecho al dictamen.">
+        <span class="ln"><span>Del dato</span></span>
+        <span class="ln"><span>al hecho.</span></span>
+        <span class="ln ln--b"><span>Del hecho</span></span>
+        <span class="ln ln--b"><span>al dictamen.</span></span>
+      </h1>
+      <p class="hero__lead reveal">Somos una firma colombiana con amplia experiencia en prevención, detección y contención de fraude, abuso de confianza y corrupción. Auditoría forense, laboratorio forense digital, analítica y gobernanza de datos, peritaje y formación, en un solo equipo.</p>
+      <div class="hero__cta reveal">
+        <a class="btn btn--solid" href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>"><span>Consultar un caso</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--ghost" href="#lineas"><span>Conozca nuestras líneas</span></a>
+      </div>
+    </div>
+    <div class="hero__vis">
+      <div class="arch__outline" aria-hidden="true"></div>
+      <div class="arch" data-parallax="-0.05"><div class="ph ph--live"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/hero.webp' ); ?>" alt="Analista forense revisando visualizaciones de datos en una oficina oscura (imagen generada con IA)" width="1024" height="1536" fetchpriority="high"></div></div>
+      
+<div class="seal seal--hero" data-parallax="0.07" role="img" aria-label="Leaders League: Highly Recommended, seis años consecutivos">
+  <svg viewBox="0 0 200 200" aria-hidden="true">
+    <defs>
+      <linearGradient id="gold1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1deaa"/><stop offset=".5" stop-color="#d4b26a"/><stop offset="1" stop-color="#9a763a"/></linearGradient>
+      <path id="sealPath1" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/>
+    </defs>
+    <circle cx="100" cy="100" r="97" fill="rgba(5,15,32,.82)" stroke="url(#gold1)" stroke-width="1.4"/>
+    <circle cx="100" cy="100" r="62" fill="none" stroke="url(#gold1)" stroke-width=".7" opacity=".8"/>
+    <g class="seal__spin"><text font-size="11.2" font-weight="600" letter-spacing="2.6" fill="url(#gold1)"><textPath href="#sealPath1" textLength="496" lengthAdjust="spacing">LEADERS LEAGUE · HIGHLY RECOMMENDED · 6 AÑOS CONSECUTIVOS ·</textPath></text></g>
+    <text x="100" y="116" text-anchor="middle" font-size="58" font-weight="300" fill="url(#gold1)">6</text>
+    <text x="100" y="136" text-anchor="middle" font-size="8.4" font-weight="600" letter-spacing="3" fill="#ecd8a4">AÑOS</text>
+  </svg>
+</div>
+    </div>
+  </div>
+  <div class="wrap hero__stats">
+    <dl>
+      <div class="reveal"><dt>Socio fundador</dt><dd>+<span data-count="30">30</span> años</dd><dd class="sub">investigando fraude y corrupción</dd></div>
+      <div class="reveal"><dt>Servicios integrados</dt><dd><span data-count="15">15</span></dd><dd class="sub">de forense a formación</dd></div>
+      <div class="reveal"><dt>Cobertura</dt><dd class="dd--sm">Colombia y<br>Latinoamérica</dd><dd class="sub">desde Bogotá</dd></div>
+    </dl>
+  </div>
+  <a class="scroll" href="#reconocimientos" aria-label="Bajar a reconocimientos"><i></i></a>
+</section>
+
+<div class="mq" aria-hidden="true">
+  <div class="mq__track"><span>Fraude</span><b></b><span>Corrupción</span><b></b><span>Abuso de confianza</span><b></b><span>Laboratorio forense digital</span><b></b><span>Gobernanza de datos</span><b></b><span>Analítica de datos</span><b></b><span>OSINT</span><b></b><span>Peritaje</span><b></b><span>SAG Academy</span><b></b><span>Cumplimiento</span><b></b><span>Fraude</span><b></b><span>Corrupción</span><b></b><span>Abuso de confianza</span><b></b><span>Laboratorio forense digital</span><b></b><span>Gobernanza de datos</span><b></b><span>Analítica de datos</span><b></b><span>OSINT</span><b></b><span>Peritaje</span><b></b><span>SAG Academy</span><b></b><span>Cumplimiento</span><b></b></div>
+</div>
+
+<section class="sec sec--bone" id="reconocimientos">
+  <div class="wrap recog">
+    <div class="recog__num reveal" aria-hidden="true"><span class="six"><span data-count="6">6</span></span></div>
+    <div class="recog__copy">
+      <p class="lbl lbl--d reveal">Reconocimientos</p>
+      <h2 class="h2" data-words>Seis años consecutivos <b>altamente recomendados.</b></h2>
+      <p class="lead reveal">Leaders League nos califica como firma <em>Highly Recommended</em> seis años seguidos. Una distinción se gana una vez; sostenerla año tras año exige la misma disciplina en cada encargo.</p>
+      <a class="link link--d reveal" href="<?php echo esc_url( home_url( '/reconocimientos/' ) ); ?>"><span>Ver todos los reconocimientos</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+  
+<div class="wrap awards" data-stagger>
+  <article class="award award--lg reveal">
+    <img class="award__seal" src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/leaders-league-ranked-2025.webp' ); ?>" alt="Sello de Leaders League: Ranked Firm 2025" width="560" height="560" loading="lazy">
+    <div>
+      <p class="lbl lbl--gold">Leaders League</p>
+      <h3>Ranked Firm 2025</h3>
+    </div>
+  </article>
+  <article class="award reveal">
+    <img class="award__logo" src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/wealth-finance.webp' ); ?>" alt="Wealth &amp; Finance International" width="448" height="210" loading="lazy">
+    <div>
+      <p class="lbl lbl--gold">Management Consulting Awards 2024 · 2025</p>
+      <ul class="award__list">
+        <li>Best Forensic Auditing &amp; Compliance Advisory Firm 2025 · Latin America</li>
+        <li>Client Service Excellence Award 2025</li>
+        <li>Best Fraud Detection Consulting Firm · 2024</li>
+      </ul>
+    </div>
+  </article>
+</div>
+</section>
+
+<section class="stats" id="cifras" aria-label="SAG en cifras">
+  <div class="grain" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="eyebrow rv">Auditoría forense · Analítica de datos · Dictámenes periciales</span>
-    <h1 class="rv d1">Del dato al hecho. <span class="l2">Del hecho al dictamen.</span></h1>
-    <p class="lead rv d2">Investigamos fraude y corrupción con evidencia que resiste el examen de un juez, un ente de control o una junta directiva. Desde Bogotá, para Colombia y Latinoamérica.</p>
-    <div class="actions rv d3">
-      <a class="btn btn-brass" href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>">Consultar un caso <span class="arr">→</span></a>
-      <a class="btn btn-ghost" href="#lineas">Conozca nuestras líneas</a>
-    </div>
-    <div class="hero-foot rv d3">
-      <a href="<?php echo esc_url( home_url( '/auditoria-forense/' ) ); ?>"><b>01</b><span>Auditoría forense</span></a>
-      <a href="<?php echo esc_url( home_url( '/analitica-de-datos/' ) ); ?>"><b>02</b><span>Analítica de datos forense</span></a>
-      <a href="<?php echo esc_url( home_url( '/dictamenes-periciales/' ) ); ?>"><b>03</b><span>Dictámenes periciales</span></a>
-    </div>
+    <h2 class="h2 h2--lt stats__h" data-words>SAG <b>en cifras.</b></h2>
+    <ul class="stats__grid" data-stagger>
+      <li class="stats__i reveal"><p class="stats__n"><span class="stats__p">+</span><span data-count="150">150</span></p><h3>clientes</h3><p>organizaciones que han confiado en SAG para prevenir, detectar e investigar el fraude.</p></li>
+      <li class="stats__i reveal"><p class="stats__n"><span class="stats__p">+</span><span data-count="600">600</span></p><h3>casos atendidos</h3><p>de manera exitosa, con la evidencia y el rigor que cada caso exige.</p></li>
+      <li class="stats__i reveal"><p class="stats__n"><span class="stats__p">+</span><span data-count="10">10</span></p><h3>años de experiencia</h3><p>fortaleciendo la gestión de nuestros clientes como socios estratégicos en la investigación y prevención de casos de fraude.</p></li>
+    </ul>
   </div>
 </section>
 
-<section class="sec-sm"><div class="wrap">
-  <div class="awards">
-    <div class="award rv"><span class="mono">Leaders League</span><p>Highly Recommended</p><small>Seis años consecutivos · Ranked Firm 2025</small></div>
-    <div class="award rv d1"><span class="mono">Management Consulting Awards 2025</span><p>Best Forensic Auditing &amp; Compliance Advisory Firm</p><small>Latinoamérica · Wealth &amp; Finance International</small></div>
-    <div class="award rv d2"><span class="mono">Management Consulting Awards 2025</span><p>Client Service Excellence Award</p><small>Wealth &amp; Finance International</small></div>
-    <div class="award rv d3"><span class="mono">Management Consulting Awards 2024</span><p>Best Fraud Detection Consulting Firm</p><small>Wealth &amp; Finance International</small></div>
-  </div>
-</div></section>
-<section class="sec dark" id="lineas"><div class="wrap">
-  <div class="sec-head">
-    <div class="rv"><span class="eyebrow">Tres líneas, un mismo expediente</span><h2>Lo que hacemos <em>mejor que nadie</em></h2></div>
-    <p class="lead rv d1">Investigamos, medimos y sustentamos. Cada línea alimenta a la siguiente: la evidencia que asegura la auditoría forense es la que procesa la analítica y la que defiende el dictamen ante el juez.</p>
-  </div>
-  <div class="lines">
-    <article class="line-card rv"><span class="num">01</span><h3>Auditoría forense</h3>
-      <p>Prevención, detección e investigación de fraude, corrupción y abuso de confianza, en el sector público y en el privado.</p>
-      <ul><li>Investigación de fraude y corrupción</li><li>Laboratorio forense digital</li><li>Evaluación de riesgo de fraude</li><li>OSINT y debida diligencia</li></ul>
-      <a class="link" href="<?php echo esc_url( home_url( '/auditoria-forense/' ) ); ?>">Explorar la línea <span>→</span></a></article>
-    <article class="line-card rv d1"><span class="num">02</span><h3>Analítica de datos forense</h3>
-      <p>Revisamos todas las transacciones, no una muestra. Minería, visualización y automatización para encontrar lo que el muestreo no ve.</p>
-      <ul><li>Analítica forense de transacciones</li><li>Monitoreo y alertas tempranas</li><li>Gobernanza y calidad de datos</li><li>Tableros para la toma de decisiones</li></ul>
-      <a class="link" href="<?php echo esc_url( home_url( '/analitica-de-datos/' ) ); ?>">Explorar la línea <span>→</span></a></article>
-    <article class="line-card rv d2"><span class="num">03</span><h3>Dictámenes periciales</h3>
-      <p>Peritaje contable y financiero forense para procesos judiciales, arbitrales y administrativos, con sustentación en audiencia.</p>
-      <ul><li>Daño emergente y lucro cesante</li><li>Contradicción de dictámenes</li><li>Tacha de documentos</li><li>Apoyo técnico a equipos legales</li></ul>
-      <a class="link" href="<?php echo esc_url( home_url( '/dictamenes-periciales/' ) ); ?>">Explorar la línea <span>→</span></a></article>
-  </div>
-  <p class="rv" style="margin-top:2.4rem;color:var(--muted-d)">¿Busca control interno, cumplimiento LA/FT, canales de denuncia o formación? <a class="link" style="color:var(--paper)" href="<?php echo esc_url( home_url( '/otros-servicios/' ) ); ?>">Vea otros servicios <span>→</span></a></p>
-</div></section>
-<section class="sec"><div class="wrap">
-  <div class="sec-head">
-    <div class="rv"><span class="eyebrow">Por qué SAG</span><h2>Rigor que <em>resiste el escrutinio</em></h2></div>
-    <p class="lead rv d1">Un hallazgo vale lo que vale su prueba. Por eso diseñamos cada encargo pensando desde el inicio en quién lo va a revisar.</p>
-  </div>
-  <div class="adv"><div class="adv-item rv"><span class="mono">01</span><h3>Evidencia asegurada desde el primer día</h3><p>Cadena de custodia desde el recaudo. Lo que encontramos se puede presentar, porque se obtuvo bien.</p></div><div class="adv-item rv d1"><span class="mono">02</span><h3>Todos los datos, no una muestra</h3><p>Procesamos la población completa de transacciones. El fraude rara vez cae en la muestra.</p></div><div class="adv-item rv d2"><span class="mono">03</span><h3>Forense digital completo</h3><p>Equipos, celulares, servidores y nube, con imágenes forenses que preservan la integridad de la información.</p></div><div class="adv-item rv"><span class="mono">04</span><h3>Prevención y detección con analítica</h3><p>Modelos y reglas que encienden alertas antes de que el daño crezca.</p></div><div class="adv-item rv d1"><span class="mono">05</span><h3>De la investigación a la audiencia</h3><p>El mismo equipo que investiga sustenta el dictamen ante el juez, el árbitro o el ente de control.</p></div><div class="adv-item rv d2"><span class="mono">06</span><h3>Servicios integrados en un expediente</h3><p>Auditoría, analítica y peritaje trabajan sobre la misma evidencia, sin pérdidas entre etapas.</p></div></div>
-</div></section>
-<section class="sec dark" id="metodo"><div class="wrap">
-  <div class="sec-head">
-    <div class="rv"><span class="eyebrow">Método</span><h2>Cuatro pasos, <em>cero atajos</em></h2></div>
-    <p class="lead rv d1">Un proceso probado que convierte una sospecha en conclusiones verificables.</p>
-  </div>
-  <div class="steps"><span class="bar"></span><div class="step"><span class="dot"></span><span class="mono">Paso 01</span><h3>Diagnóstico</h3><p>Definimos el alcance, las preguntas de la investigación y las hipótesis a probar o descartar.</p></div><div class="step"><span class="dot"></span><span class="mono">Paso 02</span><h3>Aseguramiento</h3><p>Recaudamos y preservamos la evidencia física y digital, incluidas imágenes forenses, con cadena de custodia.</p></div><div class="step"><span class="dot"></span><span class="mono">Paso 03</span><h3>Análisis</h3><p>Cruzamos todos los datos disponibles: contables, transaccionales, documentales, digitales y de fuentes abiertas.</p></div><div class="step"><span class="dot"></span><span class="mono">Paso 04</span><h3>Informe y dictamen</h3><p>Entregamos conclusiones sustentadas y, cuando se requiere, el dictamen pericial y su defensa en audiencia.</p></div></div>
-</div></section>
-<section class="sec"><div class="wrap founder">
-  <div class="portrait rv"><span class="initials">SG</span><span class="pending">[PENDIENTE: fotografía profesional de Simón]</span></div>
-  <div class="rv d1">
-    <span class="eyebrow">Socio fundador</span>
-    <blockquote>“El fraude deja rastro. Nuestro trabajo es encontrarlo, asegurarlo y explicarlo de forma que nadie pueda discutirlo.” <span class="pending">[PENDIENTE: validar o reemplazar la cita]</span></blockquote>
-    <h3>Simón Guzmán Guerrero</h3>
-    <div class="cred"><span>MBA</span><span>CGAP</span><span>CFCS</span><span>Avaluador acreditado</span></div>
-    <ul class="facts">
-      <li><b>Trayectoria</b><span>Más de 25 años en auditoría forense e investigación de fraude</span></li>
-      <li><b>Sector privado</b><span>Exdirector de Deloitte Forensics para la Región Andina; paso por BDO</span></li>
-      <li><b>Sector público</b><span>Contralor Delegado Intersectorial en la Contraloría General de la República, a cargo del Sistema General de Regalías</span></li>
-      <li><b>Academia</b><span>Profesor de auditoría forense en la Pontificia Universidad Javeriana y autor de libros sobre la materia</span></li>
-    </ul>
-    <p style="margin-top:2rem"><a class="link" href="<?php echo esc_url( home_url( '/nosotros/' ) ); ?>">Conozca al equipo <span>→</span></a></p>
-  </div>
-</div></section>
-<section class="sec-sm dark"><div class="wrap">
-  <div class="stats">
-    <div class="stat rv"><div class="v">2019</div><p>Año de fundación de SAG</p></div>
-    <div class="stat rv d1"><div class="v">6</div><p>Años consecutivos como firma Highly Recommended por Leaders League</p></div>
-    <div class="stat rv d2"><div class="v">+600</div><p>Casos atendidos</p></div>
-    <div class="stat rv d3"><div class="v">+150</div><p>Clientes que han confiado en SAG</p></div>
-  </div>
-</div></section>
-<section class="sec paper2"><div class="wrap">
-  <div class="sec-head">
-    <div class="rv"><span class="eyebrow">Conocimiento</span><h2>Análisis <em>desde la práctica</em></h2></div>
-    <p class="lead rv d1">Lo que vemos en los casos, convertido en criterio para directivos, abogados y oficiales de cumplimiento.</p>
-  </div>
-  <div class="posts"><a class="post rv" href="https://www.sagconsulting.co/2026/01/22/davos-2026-senales-de-alerta-para-la-auditoria-forense-en-latinoamerica-entre-el-dialogo-y-la-disrupcion-reflexiones-criticas-desde-la-vision-antifraude/"><span class="mono">22 ene 2026</span><h3>Davos 2026: señales de alerta para la auditoría forense en Latinoamérica</h3><span class="link">Leer artículo <span>→</span></span></a><a class="post rv d1" href="https://www.sagconsulting.co/2025/11/22/debida-diligencia-financiera-forense-en-clubes-de-futbol-suramericanos-metodologia-y-mejores-practicas/"><span class="mono">22 nov 2025</span><h3>Debida diligencia financiera forense en clubes de fútbol suramericanos</h3><span class="link">Leer artículo <span>→</span></span></a><a class="post rv d2" href="https://www.sagconsulting.co/2025/11/14/auditoria-forense-y-auditoria-interna-una-alianza-estrategica-para-blindar-la-contratacion-publica/"><span class="mono">14 nov 2025</span><h3>Auditoría forense y auditoría interna: una alianza estratégica para blindar la contratación pública</h3><span class="link">Leer artículo <span>→</span></span></a></div>
-</div></section>
-<section class="sec dark cta">
+<section class="sec sec--white" id="lineas">
   <div class="wrap">
-    <div class="rv">
-      <span class="eyebrow">Consulta confidencial</span>
-      <h2 style="margin-top:1.2rem">¿Tiene una sospecha que necesita <em>convertirse en prueba?</em></h2>
-      <p class="lead" style="margin-top:1.4rem">Cuéntenos el caso en términos generales. Un socio revisa cada solicitud y le responde con una ruta de trabajo.</p>
+    
+<header class="sec__head">
+  <p class="lbl lbl--d reveal">Tres líneas, un mismo expediente</p>
+  <h2 class="h2" data-words>Un portafolio integrado para <b>prevenir, detectar e investigar.</b></h2>
+  <p class="lead reveal">Somos su aliado estratégico en la prevención y detección de fraude, las investigaciones, el análisis proactivo de datos y la defensa judicial mediante informes periciales.</p>
+</header>
+    <div class="lines" data-stagger>
+      <article class="line reveal"><span class="line__n">01</span><h3>Auditoría forense</h3><p>Prevención, detección e investigación de fraude, corrupción y abuso de confianza, en el sector público y en el privado.</p>
+        <ul><li>Investigación de fraude y corrupción</li><li>Laboratorio forense digital</li><li>Evaluación de riesgo de fraude</li><li>OSINT y debida diligencia</li></ul>
+        <a class="link" href="<?php echo esc_url( home_url( '/auditoria-forense/' ) ); ?>"><span>Explorar la línea</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></article>
+      <article class="line reveal"><span class="line__n">02</span><h3>Analítica de datos forense</h3><p>Revisamos todas las transacciones, no una muestra. Minería, visualización y automatización para encontrar lo que el muestreo no ve.</p>
+        <ul><li>Analítica forense de transacciones</li><li>Monitoreo y alertas tempranas</li><li>Gobernanza y calidad de datos</li><li>Tableros para la toma de decisiones</li></ul>
+        <a class="link" href="<?php echo esc_url( home_url( '/analitica-de-datos/' ) ); ?>"><span>Explorar la línea</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></article>
+      <article class="line reveal"><span class="line__n">03</span><h3>Dictámenes periciales</h3><p>Peritaje contable y financiero forense para procesos judiciales, arbitrales y administrativos, con sustentación en audiencia.</p>
+        <ul><li>Daño emergente y lucro cesante</li><li>Contradicción de dictámenes</li><li>Tacha de documentos</li><li>Apoyo técnico a equipos legales</li></ul>
+        <a class="link" href="<?php echo esc_url( home_url( '/dictamenes-periciales/' ) ); ?>"><span>Explorar la línea</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></article>
     </div>
-    <div class="cta-box rv d2">
-      <dl>
-        <div><dt>Correo</dt><dd><a href="mailto:comercial@sagconsulting.co">comercial@sagconsulting.co</a></dd></div>
-        <div><dt>Teléfono</dt><dd><a href="tel:+573134661950">+57 313 466 1950</a></dd></div>
-        <div><dt>WhatsApp</dt><dd><a href="https://wa.me/573138170765">+57 313 817 0765</a></dd></div>
-      </dl>
-      <a class="btn btn-brass" href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>">Consultar un caso <span class="arr">→</span></a>
+    <p class="lines__more reveal">¿Busca control interno, cumplimiento LA/FT, canales de denuncia o formación? <a href="<?php echo esc_url( home_url( '/otros-servicios/' ) ); ?>">Vea otros servicios →</a></p>
+  </div>
+</section>
+
+<section class="sec sec--dark" id="ventajas">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="wrap adv">
+    <div class="adv__side">
+      <p class="lbl lbl--cy reveal">Ventajas de la consultoría forense</p>
+      <h2 class="h2 h2--lt" data-words>Cuando importa saber qué pasó, <b>el método lo es todo.</b></h2>
+      <p class="lead lead--lt reveal">Una investigación débil no se sostiene ante una autoridad. Trabajamos para que cada conclusión tenga evidencia detrás y pueda explicarse con claridad.</p>
+      <div class="adv__img reveal" data-parallax="-0.04"><div class="ph ph--live"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/ventajas.webp' ); ?>" alt="Estación de análisis forense digital con disco, bolsa de evidencia y lupa (imagen generada con IA)" width="1536" height="1024" loading="lazy"></div></div>
+    </div>
+    <ul class="adv__list" data-stagger>
+      <li class="row reveal"><span class="row__n">01</span><div><h3>Evidencia asegurada desde el primer día</h3><p>Identificamos, obtenemos y aseguramos los elementos materiales probatorios, para que el informe pueda presentarse ante una autoridad.</p></div><span class="row__t">Cadena de custodia</span></li>
+      <li class="row reveal"><span class="row__n">02</span><div><h3>Todos los datos, no solo una muestra</h3><p>Revisamos todos los registros disponibles para separar lo habitual de lo inusual. Cada alerta se revisa antes de llamarla hallazgo.</p></div><span class="row__fig">100%</span></li>
+      <li class="row reveal"><span class="row__n">03</span><div><h3>Forense digital completo</h3><p>Análisis de equipos, celulares, servidores e información en la nube, con imágenes forenses que preservan el original.</p></div><span class="row__t">Equipos · Nube</span></li>
+      <li class="row reveal"><span class="row__n">04</span><div><h3>Prevención y detección</h3><p>Revisamos el marco interno y usamos analítica de datos para anticipar riesgos de fraude, antes de que se materialicen.</p></div><span class="row__t">Analítica</span></li>
+      <li class="row reveal"><span class="row__n">05</span><div><h3>De la investigación a la audiencia</h3><p>Acompañamos el proceso ante las autoridades y sustentamos el dictamen cuando se requiere.</p></div><span class="row__t">Peritaje</span></li>
+      <li class="row reveal"><span class="row__n">06</span><div><h3>Muchos servicios, un mismo expediente</h3><p>Auditoría forense, laboratorio digital, analítica de datos y peritaje se contratan por separado y, cuando el caso lo pide, trabajan juntos sobre la misma evidencia.</p></div><span class="row__t">Integrado</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec sec--bone" id="equipo">
+  <div class="wrap">
+    
+<header class="sec__head">
+  <p class="lbl lbl--d reveal">El equipo</p>
+  <h2 class="h2" data-words>Experiencia que <b>sostiene cada dictamen.</b></h2>
+  <p class="lead reveal">Un equipo multidisciplinario, con formación en contaduría, derecho, economía e ingeniería de sistemas, liderado por un socio fundador con más de 30 años en investigación de fraude.</p>
+</header>
+    
+<article class="founder reveal">
+  <div class="founder__ph">
+    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/equipo/simon-900.webp' ); ?>" alt="Retrato de Simón Guzmán Guerrero" width="900" height="1079" loading="lazy">
+    <span class="founder__badge">Socio fundador</span>
+  </div>
+  <div class="founder__body">
+    <p class="lbl lbl--cy">Liderazgo</p>
+    <h3>Simón Guzmán Guerrero</h3>
+    <p class="founder__role">Socio fundador</p>
+    <p>Economista, especialista en Administración Financiera y control fiscal, con máster en dirección y administración de empresas. Auditor forense con más de 30 años de experiencia en investigación de fraude, recuperación de activos y gobierno de organizaciones públicas y privadas en Colombia y Latinoamérica.</p>
+    <p>Actúa como perito ante jueces y tribunales. Es profesor de auditoría forense en la Pontificia Universidad Javeriana y autor de libros sobre la materia.</p>
+    <ul class="cred" aria-label="Credenciales"><li>MBA</li><li>CGAP</li><li>CFCS</li><li>Avaluador acreditado</li></ul>
+    <dl class="path">
+      <div><dt>Deloitte</dt><dd>Dirigió prácticas forenses; director para la Región Andina</dd></div>
+      <div><dt>BDO</dt><dd>Dirigió la práctica forense</dd></div>
+      <div><dt>Contraloría General de la República</dt><dd>Contralor Delegado Intersectorial, a cargo del Sistema General de Regalías</dd></div>
+    </dl>
+    <a class="link" href="https://www.linkedin.com/in/simon-alejandro-guzman-mba-cfcs-cgap-1a299b29/" target="_blank" rel="noopener"><span>Ver perfil en LinkedIn</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    <a class="link" href="<?php echo esc_url( home_url( '/nosotros/' ) ); ?>"><span>Conozca al equipo completo</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</article>
+  </div>
+</section>
+
+<section class="sec sec--dark" id="metodo">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="wrap method">
+    <div class="method__side">
+      <p class="lbl lbl--cy reveal">Cómo trabajamos</p>
+      <h2 class="h2 h2--lt" data-words>Del dato al dictamen, <b>sin saltos.</b></h2>
+      <p class="lead lead--lt reveal">Cuatro pasos que se apoyan entre sí. Cada uno deja constancia de lo que hizo y por qué.</p>
+      <a class="btn btn--solid reveal" href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>"><span>Hablemos de su caso</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <ol class="steps" id="steps">
+      <span class="steps__rail" aria-hidden="true"><i id="rail"></i></span>
+      <li class="step reveal"><span class="step__n">01</span><h3>Diagnóstico</h3><p>Partimos de lo que se sabe y de lo que se sospecha. Definimos el alcance y las preguntas que la investigación debe responder.</p></li><li class="step reveal"><span class="step__n">02</span><h3>Aseguramiento de la evidencia</h3><p>Obtenemos y protegemos los elementos materiales probatorios, incluidas las imágenes forenses de equipos, celulares y servidores.</p></li><li class="step reveal"><span class="step__n">03</span><h3>Análisis</h3><p>Trabajamos sobre todos los datos disponibles. Ubicamos dónde se materializó el riesgo, durante cuánto tiempo y con qué pérdida.</p></li><li class="step reveal"><span class="step__n">04</span><h3>Informe y dictamen</h3><p>Entregamos un informe estructurado, con posible alcance pericial, y acompañamos el proceso hasta la sustentación en audiencia.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band">
+  <div class="band__img" data-parallax="0.08"><div class="ph ph--live"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/banda.webp' ); ?>" alt="Panorámica de Bogotá al atardecer desde una oficina (imagen generada con IA)" width="1536" height="1024" loading="lazy"></div></div>
+  <div class="band__shade" aria-hidden="true"></div>
+  <div class="wrap band__in">
+    <p class="band__quote reveal">Rigor técnico, trazabilidad y un criterio que se sostiene ante cualquier autoridad.</p>
+    <dl class="band__stats">
+      <div class="reveal"><dt>Desde</dt><dd><span data-count="2019" data-plain>2019</span></dd></div>
+      <div class="reveal"><dt>Servicios</dt><dd><span data-count="15">15</span></dd></div>
+      <div class="reveal"><dt>Cobertura</dt><dd class="dd--txt">Colombia y Latinoamérica</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec sec--white" id="conocimiento">
+  <div class="wrap">
+    <header class="sec__head sec__head--row">
+      <div>
+        <p class="lbl lbl--d reveal">Conocimiento</p>
+        <h2 class="h2" data-words>Ideas y análisis de <b>nuestros especialistas.</b></h2>
+        <p class="lead reveal">Artículos sobre fraude, auditoría forense, analítica, peritaje y cumplimiento, escritos por el equipo de SAG.</p>
+      </div>
+      <div class="li reveal">
+        <p>Más publicaciones en</p>
+        <div class="li__b">
+          <a class="btn btn--sm btn--dark" href="https://www.linkedin.com/company/sag-assesment-consulting-sas/" target="_blank" rel="noopener"><span>LinkedIn de SAG</span></a>
+          <a class="btn btn--sm btn--dark" href="https://www.linkedin.com/in/simon-alejandro-guzman-mba-cfcs-cgap-1a299b29/" target="_blank" rel="noopener"><span>Simón Guzmán</span></a>
+        </div>
+      </div>
+    </header>
+    <ul class="posts" data-stagger>
+      <li class="post reveal"><a class="post__a" href="https://www.sagconsulting.co/2026/01/22/venezuela-despues-del-chavismo-oportunidades-economicas-para-colombia-y-la-urgencia-de-una-estrategia-de-reconstruccion/" target="_blank" rel="noopener">
+        <span class="post__meta"><time datetime="2026-01-22">22 ene 2026</time><em>Economía y política pública</em></span>
+        <h3>Venezuela después del chavismo: oportunidades económicas para Colombia y la urgencia de una estrategia de reconstrucción</h3><span class="post__by">Simón Guzmán</span>
+        <span class="post__go">Leer artículo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></li>
+      <li class="post reveal"><a class="post__a" href="https://www.sagconsulting.co/2026/01/22/el-salario-minimo-no-vive-en-el-vacio-cuando-el-aumento-ignora-a-las-pymes-el-empleo-paga-la-cuenta/" target="_blank" rel="noopener">
+        <span class="post__meta"><time datetime="2026-01-22">22 ene 2026</time><em>Economía y política pública</em></span>
+        <h3>El salario mínimo no vive en el vacío: cuando el aumento ignora a las pymes, el empleo paga la cuenta</h3><span class="post__by">Simón Guzmán</span>
+        <span class="post__go">Leer artículo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></li>
+      <li class="post reveal"><a class="post__a" href="https://www.sagconsulting.co/2026/01/22/davos-2026-senales-de-alerta-para-la-auditoria-forense-en-latinoamerica-entre-el-dialogo-y-la-disrupcion-reflexiones-criticas-desde-la-vision-antifraude/" target="_blank" rel="noopener">
+        <span class="post__meta"><time datetime="2026-01-22">22 ene 2026</time><em>Auditoría forense</em></span>
+        <h3>Davos 2026: señales de alerta para la auditoría forense en Latinoamérica</h3><span class="post__by">Simón Guzmán</span>
+        <span class="post__go">Leer artículo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></li>
+      <li class="post reveal"><a class="post__a" href="https://www.sagconsulting.co/2025/11/22/debida-diligencia-financiera-forense-en-clubes-de-futbol-suramericanos-metodologia-y-mejores-practicas/" target="_blank" rel="noopener">
+        <span class="post__meta"><time datetime="2025-11-22">22 nov 2025</time><em>Auditoría forense</em></span>
+        <h3>Debida diligencia financiera forense en clubes de fútbol suramericanos</h3><span class="post__by">Simón Guzmán</span>
+        <span class="post__go">Leer artículo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></li>
+      <li class="post reveal"><a class="post__a" href="https://www.sagconsulting.co/2025/11/21/la-evolucion-silenciosa-del-fraude-bancario-cuando-la-prevencion-debe-adelantarse-al-engano/" target="_blank" rel="noopener">
+        <span class="post__meta"><time datetime="2025-11-21">21 nov 2025</time><em>Auditoría forense</em></span>
+        <h3>La evolución silenciosa del fraude bancario: cuando la prevención debe adelantarse al engaño</h3><span class="post__by">Simón Guzmán</span>
+        <span class="post__go">Leer artículo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></li>
+      <li class="post reveal"><a class="post__a" href="https://www.sagconsulting.co/2025/11/14/auditoria-forense-y-auditoria-interna-una-alianza-estrategica-para-blindar-la-contratacion-publica/" target="_blank" rel="noopener">
+        <span class="post__meta"><time datetime="2025-11-14">14 nov 2025</time><em>Auditoría forense</em></span>
+        <h3>Auditoría forense y auditoría interna: una alianza estratégica para blindar la contratación pública</h3><span class="post__by">Simón Guzmán</span>
+        <span class="post__go">Leer artículo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></li>
+    </ul>
+    <div class="posts__more reveal"><a class="btn btn--dark" href="https://www.sagconsulting.co/#conocimiento" target="_blank" rel="noopener"><span>Ver más artículos</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<section class="cta" id="consulta">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="hero__aura hero__aura--c" aria-hidden="true"></div>
+  <div class="wrap cta__grid">
+    <div>
+      <p class="lbl lbl--cy reveal">Consulta confidencial</p>
+      <h2 class="h2 h2--lt" data-words>¿Tiene una sospecha que necesita <b>convertirse en prueba?</b></h2>
+      <p class="lead lead--lt reveal">Basta una descripción general. Si el caso avanza, le pediremos nombres y documentos por un canal seguro.</p>
+    </div>
+    <div class="cta__box reveal">
+      <ul class="chan">
+        <li><span>Correo</span><a href="mailto:comercial@sagconsulting.co">comercial@sagconsulting.co</a></li>
+        <li><span>Teléfono</span><a href="tel:+573134661950">+57 313 466 1950</a></li>
+        <li><span>WhatsApp</span><a href="https://wa.me/573138170765" target="_blank" rel="noopener">+57 313 817 0765</a></li>
+      </ul>
+      <a class="btn btn--solid btn--block" href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>"><span>Consultar un caso</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>

@@ -1,91 +1,129 @@
 <!DOCTYPE html>
-<html lang="es" class="no-js">
+<html lang="es-CO">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contacto | SAG Assessment & Consulting</title><meta name="description" content="Consulte un caso de forma confidencial.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#050f20">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/styles.css">
+<script>(function(){var d=document.documentElement;d.classList.add("js");try{var r=window.matchMedia("(prefers-reduced-motion: reduce)").matches,c=navigator.connection||{};if(!r&&!c.saveData)d.classList.add("anim")}catch(e){}})();</script>
 </head>
-<body>
+<body id="top">
 
-<a class="skip" href="#main">Ir al contenido</a>
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="index.html" aria-label="SAG Assessment & Consulting, inicio">
-      <span class="brand-mark">S</span>
-      <span class="brand-text"><b>SAG</b><span>Assessment &amp; Consulting</span></span>
-    </a>
-    <button class="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="head" id="head">
+  <div class="wrap head__in">
+    <a class="head__logo" href="index.html" aria-label="SAG Assessment &amp; Consulting, inicio"><img src="assets/img/logo-sag-blanco.svg" alt="SAG Assessment &amp; Consulting" width="84" height="46"></a>
     <nav class="nav" id="nav" aria-label="Principal">
-      <ul><li><a class="nl" href="auditoria-forense.html">Auditoría forense</a></li><li><a class="nl" href="analitica-de-datos.html">Analítica forense</a></li><li><a class="nl" href="dictamenes-periciales.html">Dictámenes periciales</a></li><li><a class="nl" href="otros-servicios.html">Otros servicios</a></li><li><a class="nl" href="nosotros.html">Nosotros</a></li><li><a class="nl" href="reconocimientos.html">Reconocimientos</a></li></ul>
-      <a class="btn btn-brass" href="contacto.html">Consultar un caso <span class="arr">→</span></a>
+      <ul><li><a href="auditoria-forense.html">Auditoría forense</a></li><li><a href="analitica-de-datos.html">Analítica forense</a></li><li><a href="dictamenes-periciales.html">Dictámenes periciales</a></li><li><a href="otros-servicios.html">Otros servicios</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="reconocimientos.html">Reconocimientos</a></li></ul>
+      <a class="btn btn--sm btn--line head__cta" href="contacto.html"><span>Consultar un caso</span></a>
     </nav>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú"><i></i><i></i></button>
   </div>
 </header>
-<main id="main">
+<main id="contenido">
 
-<section class="page-hero dark">
-  
-  <div class="wrap" style="position:relative">
-    <p class="crumbs"><a href="index.html">Inicio</a> / Contacto</p>
-    <span class="eyebrow rv">Consulta confidencial</span>
-    <h1 class="rv d1" style="margin-top:1.4rem">Cuéntenos <em>su caso</em></h1>
-    <p class="lead rv d2">Describa la situación en términos generales. No incluya nombres, documentos ni datos sensibles en este primer contacto: un socio le responderá para definir el canal adecuado.</p>
+<section class="phero phero--text">
+  <div class="hero__lines" aria-hidden="true"></div>
+  <div class="hero__aura hero__aura--a" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="wrap phero__grid">
+    <div>
+      <nav class="crumbs reveal" aria-label="Ruta de navegación"><a href="index.html">Inicio</a><i>/</i><span>Contacto</span></nav>
+      <p class="lbl lbl--cy reveal">Contacto · Consulta confidencial</p>
+      <h1 class="reveal">Cuéntenos <b>qué necesita resolver.</b></h1>
+      <p class="lead lead--lt reveal">Describa la situación en términos generales. No incluya nombres, documentos ni datos sensibles en este primer contacto: si el caso avanza, definiremos un canal seguro.</p>
+      
+    </div>
+    
   </div>
 </section>
-<section class="sec"><div class="wrap contact">
-  <div class="rv">
-    <span class="eyebrow">Canales directos</span>
-    <ul class="channels" style="margin-top:2rem">
-      <li><span class="mono">Correo</span><a href="mailto:comercial@sagconsulting.co">comercial@sagconsulting.co</a></li>
-      <li><span class="mono">Teléfono</span><a href="tel:+573134661950">+57 313 466 1950</a></li>
-      <li><span class="mono">WhatsApp</span><a href="https://wa.me/573138170765">+57 313 817 0765</a></li>
-      <li><span class="mono">Oficina</span><span class="v">Bogotá, Colombia</span> <span class="pending">[PENDIENTE: dirección física, si se quiere publicar]</span></li>
-    </ul>
-  </div>
-  <form class="form rv d1" id="case-form" novalidate>
-    <div class="field"><label for="f-n">Nombre</label><input id="f-n" name="nombre" autocomplete="name" required></div>
-    <div class="field"><label for="f-o">Organización</label><input id="f-o" name="organizacion" autocomplete="organization"></div>
-    <div class="field"><label for="f-e">Correo</label><input id="f-e" name="correo" type="email" autocomplete="email" required></div>
-    <div class="field"><label for="f-t">Teléfono (opcional)</label><input id="f-t" name="telefono" type="tel" autocomplete="tel"></div>
-    <div class="field full"><label for="f-l">Línea de interés</label><select id="f-l" name="linea"><option>Auditoría forense</option><option>Analítica de datos</option><option>Dictámenes periciales</option><option>Otro servicio</option></select></div>
-    <div class="field full"><label for="f-d">Descripción general del caso</label><textarea id="f-d" name="descripcion" required></textarea></div>
-    <p class="note full">Al enviar acepta la <a class="link" href="https://www.sagconsulting.co/privacidad.html">política de privacidad</a>.</p>
-    <div class="full"><button class="btn btn-ink" type="submit">Enviar consulta <span class="arr">→</span></button></div>
-    <div class="form-msg full" id="form-msg" tabindex="-1">Gracias. En este prototipo el formulario aún no envía mensajes. Por ahora escríbanos a <b>comercial@sagconsulting.co</b>. <span class="pending">[PENDIENTE: conectar el formulario al correo comercial]</span></div>
-  </form>
-</div></section></main>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="foot-top">
-      <div>
-        <a class="brand" href="index.html"><span class="brand-mark">S</span><span class="brand-text"><b>SAG</b><span>Assessment &amp; Consulting</span></span></a>
-        <p class="foot-claim">Del dato al hecho. Del hecho al dictamen.</p>
+<section class="sec sec--contact" id="contacto" style="padding-top:clamp(48px,6vw,88px)">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="hero__aura hero__aura--c" aria-hidden="true"></div>
+  <div class="wrap contact">
+    <div class="contact__copy">
+      <p class="lbl lbl--cy reveal">Canales directos</p>
+      <ul class="chan reveal">
+        <li><span>Correo</span><a href="mailto:comercial@sagconsulting.co">comercial@sagconsulting.co</a></li>
+        <li><span>Teléfono</span><a href="tel:+573134661950">+57 313 466 1950</a></li>
+        <li><span>WhatsApp</span><a href="https://wa.me/573138170765" target="_blank" rel="noopener">+57 313 817 0765</a></li>
+        <li><span>Oficina</span><div class="chan__v"><b>Bogotá, Colombia</b><span class="pending">[PENDIENTE: dirección física, si se quiere publicar]</span></div></li>
+      </ul>
+      <p class="soc reveal">
+        <a href="https://www.linkedin.com/company/sag-assesment-consulting-sas/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/sag.consulting/" target="_blank" rel="noopener">Instagram</a>
+      </p>
+    </div>
+    <form class="form reveal" id="form" novalidate>
+      <fieldset class="form__srv">
+        <legend>¿Sobre qué servicio nos escribe?</legend>
+        <label class="pill"><input type="radio" name="servicio" value="Auditoría forense" checked><span>Auditoría forense</span></label>
+        <label class="pill"><input type="radio" name="servicio" value="Laboratorio forense digital"><span>Laboratorio forense digital</span></label>
+        <label class="pill"><input type="radio" name="servicio" value="Analítica y gobernanza de datos"><span>Analítica y gobernanza de datos</span></label>
+        <label class="pill"><input type="radio" name="servicio" value="Dictámenes periciales"><span>Dictámenes periciales</span></label>
+        <label class="pill"><input type="radio" name="servicio" value="SAG Academy"><span>SAG Academy</span></label>
+        <label class="pill"><input type="radio" name="servicio" value="Otro asunto"><span>Otro asunto</span></label>
+      </fieldset>
+      <div class="row2">
+        <div class="fld"><input id="f-nombre" name="nombre" type="text" autocomplete="name" placeholder=" " required><label for="f-nombre">Nombre</label><p class="err" hidden></p></div>
+        <div class="fld"><input id="f-org" name="organizacion" type="text" autocomplete="organization" placeholder=" "><label for="f-org">Organización</label></div>
       </div>
-      <div><h4>Líneas</h4><ul>
+      <div class="row2">
+        <div class="fld"><input id="f-correo" name="correo" type="email" autocomplete="email" placeholder=" " required><label for="f-correo">Correo electrónico</label><p class="err" hidden></p></div>
+        <div class="fld"><input id="f-tel" name="telefono" type="tel" autocomplete="tel" placeholder=" "><label for="f-tel">Teléfono</label></div>
+      </div>
+      <div class="fld"><textarea id="f-msg" name="necesidad" rows="4" maxlength="1500" placeholder=" " required></textarea><label for="f-msg">Describa su necesidad de forma general</label><p class="err" hidden></p></div>
+      <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="chk"><input type="checkbox" id="f-terms" required><span>He leído y acepto los <a href="https://www.sagconsulting.co/terminos.html" target="_blank" rel="noopener">Términos y Condiciones</a>.</span></label>
+      <p class="err err--chk" id="err-terms" hidden></p>
+      <label class="chk"><input type="checkbox" id="f-priv" required><span>He leído la <a href="https://www.sagconsulting.co/privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a> y autorizo a SAG Assessment &amp; Consulting S.A.S. a tratar mis datos personales para responder esta consulta.</span></label>
+      <p class="err err--chk" id="err-priv" hidden></p>
+      <p class="aviso">Responsable: SAG Assessment &amp; Consulting S.A.S. (NIT 900.951.905-5). Usamos su nombre, correo y consulta solo para responderle; teléfono y organización son opcionales. Puede conocer, actualizar, rectificar o suprimir sus datos y revocar su autorización escribiendo a comercial@sagconsulting.co. Más información en la <a href="https://www.sagconsulting.co/privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a>. No incluya datos sensibles ni confidenciales.</p>
+      <button class="btn btn--solid btn--block" type="submit"><span>Enviar consulta</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <p class="form__note" id="form-note" role="status" aria-live="polite"></p>
+      <p><span class="pending">[PENDIENTE: conectar el formulario a un servicio de envío; hoy abre el correo del visitante con la consulta redactada]</span></p>
+    </form>
+  </div>
+</section></main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <a href="index.html" aria-label="SAG Assessment &amp; Consulting, inicio"><img src="assets/img/logo-sag-blanco.svg" alt="SAG Assessment &amp; Consulting" width="108" height="60" loading="lazy"></a>
+        <p class="foot__claim">Del dato al hecho. Del hecho al dictamen.</p>
+      </div>
+      <div><h2 class="foot__h">Líneas</h2><ul>
         <li><a href="auditoria-forense.html">Auditoría forense</a></li>
         <li><a href="analitica-de-datos.html">Analítica de datos forense</a></li>
         <li><a href="dictamenes-periciales.html">Dictámenes periciales</a></li>
         <li><a href="otros-servicios.html">Otros servicios</a></li></ul></div>
-      <div><h4>Firma</h4><ul>
+      <div><h2 class="foot__h">Firma</h2><ul>
         <li><a href="nosotros.html">Nosotros y equipo</a></li>
         <li><a href="reconocimientos.html">Reconocimientos</a></li>
         <li><a href="contacto.html">Contacto</a></li>
-        <li><a href="https://www.sagconsulting.co/nosotros/codigo-de-etica-y-conducta/">Código de ética</a></li></ul></div>
-      <div><h4>Contacto</h4><ul>
+        <li><a href="https://www.sagconsulting.co/nosotros/codigo-de-etica-y-conducta/" target="_blank" rel="noopener">Código de ética</a></li></ul></div>
+      <div><h2 class="foot__h">Contacto</h2><ul>
         <li><a href="mailto:comercial@sagconsulting.co">comercial@sagconsulting.co</a></li>
         <li><a href="tel:+573134661950">+57 313 466 1950</a></li>
-        <li><a href="https://wa.me/573138170765">WhatsApp +57 313 817 0765</a></li>
+        <li><a href="https://wa.me/573138170765" target="_blank" rel="noopener">WhatsApp +57 313 817 0765</a></li>
         <li>Bogotá, Colombia</li>
-        <li><a href="https://www.linkedin.com/company/sag-assesment-consulting-sas/">LinkedIn</a> · <a href="https://www.instagram.com/sag.consulting">Instagram</a></li></ul></div>
+        <li><a href="https://www.linkedin.com/company/sag-assesment-consulting-sas/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.instagram.com/sag.consulting/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
     </div>
-    <div class="foot-bottom">
-      <span>© 2026 SAG Assessment &amp; Consulting S.A.S. · NIT 900.951.905-5 · Bogotá, Colombia</span>
-      <nav aria-label="Legal"><a href="https://www.sagconsulting.co/terminos.html">Términos</a><a href="https://www.sagconsulting.co/privacidad.html">Privacidad</a><a href="https://www.sagconsulting.co/cookies.html">Cookies</a></nav>
+    <div class="foot__bot">
+      <p>© <span id="year">2026</span> SAG Assessment &amp; Consulting S.A.S. · NIT 900.951.905-5 · Bogotá, Colombia<small class="foot__ia">Algunas imágenes y el video de fondo fueron generados con inteligencia artificial y no representan clientes ni instalaciones reales.</small></p>
+      <nav aria-label="Legal">
+        <a href="https://www.sagconsulting.co/terminos.html" target="_blank" rel="noopener">Términos y Condiciones</a>
+        <a href="https://www.sagconsulting.co/privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a>
+        <a href="https://www.sagconsulting.co/cookies.html" target="_blank" rel="noopener">Política de Cookies</a>
+        <a href="#top">Volver arriba ↑</a>
+      </nav>
     </div>
   </div>
 </footer>
-<script src="assets/main.js"></script>
+<script src="assets/main.js" defer></script>
 </body>
 </html>
