@@ -346,8 +346,8 @@ pages.index = { title: 'SAG Assessment & Consulting | Auditoría forense en Colo
     <aside class="ficha" aria-label="Ficha ilustrativa de un expediente">
       <div><span>Expediente</span><b>SAG · 2026 · 0417</b></div>
       <div><span>Estado</span><b class="r" id="f-st">En análisis</b></div>
-      <div><span>Registros revisados</span><b id="f-rec">0</b></div>
-      <div><span>Alertas</span><b id="f-al">00</b></div>
+      <div><span>Registros revisados</span><b id="f-rec">1.248.903</b></div>
+      <div><span>Alertas</span><b id="f-al">07</b></div>
       <small>Representación ilustrativa · no corresponde a un caso real</small>
     </aside>
     <div class="wrap hero__body">
