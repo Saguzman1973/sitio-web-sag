@@ -46,7 +46,7 @@ get_header(); ?>
     <ul class="svc svc--2" data-stagger><li class="svc__c reveal">
   <div class="svc__top"><span class="svc__n">01</span></div>
   <h3>Analítica de datos</h3><p>Minería, análisis y visualización de todos los registros disponibles para encontrar patrones, anomalías e indicadores, y automatización de procesos repetitivos.</p>
-  
+  <ul class="svc__tags"><li>Minería</li><li>Visualización</li><li>Automatización</li></ul>
 </li><li class="svc__c reveal">
   <div class="svc__top"><span class="svc__n">02</span></div>
   <h3>Monitoreo continuo y alertas tempranas</h3><p>Reglas y modelos que se ejecutan de forma automática y avisan cuando una operación se sale de lo esperado.</p>
@@ -58,7 +58,7 @@ get_header(); ?>
 </li><li class="svc__c reveal">
   <div class="svc__top"><span class="svc__n">04</span></div>
   <h3>Gobernanza de datos</h3><p>Políticas, responsables y controles para que los datos de la organización sean confiables, trazables y estén protegidos, base de cualquier análisis.</p>
-  
+  <ul class="svc__tags"><li>Políticas</li><li>Calidad</li><li>Trazabilidad</li></ul>
 </li></ul>
   </div>
 </section>

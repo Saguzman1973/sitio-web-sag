@@ -29,22 +29,22 @@ get_header(); ?>
     <ul class="svc" data-stagger><li class="svc__c reveal">
   <div class="svc__top"><span class="svc__n">12</span><span class="svc__cat">Financiero y contable</span></div>
   <h3>Control interno y cumplimiento</h3><p>Análisis de controles internos y del cumplimiento normativo para identificar apropiación ilícita de activos, corrupción y soborno, LA/FT e inobservancia de normas.</p>
-  
+  <ul class="svc__tags"><li>Control interno</li><li>LA/FT</li></ul>
 </li><li class="svc__c reveal">
   <div class="svc__top"><span class="svc__n">13</span><span class="svc__cat">Sector público y cumplimiento</span></div>
   <h3>Riesgos en recursos públicos</h3><p>Gestión y prevención de riesgos en la ejecución de recursos públicos: rendición de cuentas, planes de mejoramiento, defensa técnica ante entes de control y modelo preventivo y disciplinario.</p>
-  
+  <ul class="svc__tags"><li>Entes de control</li><li>Modelo preventivo</li></ul>
 </li><li class="svc__c reveal">
   <div class="svc__top"><span class="svc__n">14</span><span class="svc__cat">Sector público y cumplimiento</span></div>
   <h3>Canales de denuncia</h3><p>Outsourcing de canales de denuncia transparentes y confiables: recepción por web, correo y teléfono, procesamiento y clasificación, comité de ética y reportes.</p>
-  
+  <ul class="svc__tags"><li>Web · correo · teléfono</li><li>Comité de ética</li></ul>
 </li></ul>
     <div class="feature reveal">
       <div>
         <p class="lbl lbl--cy">Formación · 15</p>
         <h3>SAG <b>Academy</b></h3>
         <p>Plataforma de cursos guiados por expertos del sector para expandir conocimientos y habilidades en auditoría forense y destacar en la carrera profesional.</p>
-        <ul class="svc__tags"></ul>
+        <ul class="svc__tags"><li>Cursos</li><li>Expertos del sector</li><li>Auditoría forense</li></ul>
       </div>
       <div class="feature__side">
         <span class="pending">[PENDIENTE: enlace a SAG Academy]</span>
