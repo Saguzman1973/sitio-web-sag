@@ -83,8 +83,8 @@ get_header(); ?>
   <div class="stats">
     <div class="stat rv"><div class="v">2019</div><p>Año de fundación de SAG</p></div>
     <div class="stat rv d1"><div class="v">6</div><p>Años consecutivos como firma Highly Recommended por Leaders League</p></div>
-    <div class="stat rv d2"><div class="v"><span class="pending">[PENDIENTE: cifra]</span></div><p>Casos atendidos</p></div>
-    <div class="stat rv d3"><div class="v"><span class="pending">[PENDIENTE: cifra]</span></div><p>Clientes en Colombia y Latinoamérica</p></div>
+    <div class="stat rv d2"><div class="v">+600</div><p>Casos atendidos</p></div>
+    <div class="stat rv d3"><div class="v">+150</div><p>Clientes que han confiado en SAG</p></div>
   </div>
 </div></section>
 <section class="sec paper2"><div class="wrap">
@@ -92,8 +92,7 @@ get_header(); ?>
     <div class="rv"><span class="eyebrow">Conocimiento</span><h2>Análisis <em>desde la práctica</em></h2></div>
     <p class="lead rv d1">Lo que vemos en los casos, convertido en criterio para directivos, abogados y oficiales de cumplimiento.</p>
   </div>
-  <div class="posts"><a class="post rv" href="https://www.sagconsulting.co/#conocimiento"><span class="mono">22 ene 2026</span><h3>Davos 2026: señales de alerta para la auditoría forense en Latinoamérica</h3><span class="link">Leer artículo <span>→</span></span></a><a class="post rv d1" href="https://www.sagconsulting.co/#conocimiento"><span class="mono">22 nov 2025</span><h3>Debida diligencia financiera forense en clubes de fútbol suramericanos</h3><span class="link">Leer artículo <span>→</span></span></a><a class="post rv d2" href="https://www.sagconsulting.co/#conocimiento"><span class="mono">14 nov 2025</span><h3>Auditoría forense y auditoría interna: una alianza estratégica para blindar la contratación pública</h3><span class="link">Leer artículo <span>→</span></span></a></div>
-  <p class="rv" style="margin-top:2rem"><span class="pending">[PENDIENTE: enlazar cada artículo a su URL definitiva]</span></p>
+  <div class="posts"><a class="post rv" href="https://www.sagconsulting.co/2026/01/22/davos-2026-senales-de-alerta-para-la-auditoria-forense-en-latinoamerica-entre-el-dialogo-y-la-disrupcion-reflexiones-criticas-desde-la-vision-antifraude/"><span class="mono">22 ene 2026</span><h3>Davos 2026: señales de alerta para la auditoría forense en Latinoamérica</h3><span class="link">Leer artículo <span>→</span></span></a><a class="post rv d1" href="https://www.sagconsulting.co/2025/11/22/debida-diligencia-financiera-forense-en-clubes-de-futbol-suramericanos-metodologia-y-mejores-practicas/"><span class="mono">22 nov 2025</span><h3>Debida diligencia financiera forense en clubes de fútbol suramericanos</h3><span class="link">Leer artículo <span>→</span></span></a><a class="post rv d2" href="https://www.sagconsulting.co/2025/11/14/auditoria-forense-y-auditoria-interna-una-alianza-estrategica-para-blindar-la-contratacion-publica/"><span class="mono">14 nov 2025</span><h3>Auditoría forense y auditoría interna: una alianza estratégica para blindar la contratación pública</h3><span class="link">Leer artículo <span>→</span></span></a></div>
 </div></section>
 <section class="sec dark cta">
   <div class="wrap">

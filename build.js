@@ -201,15 +201,15 @@ const statsBlock = `
   <div class="stats">
     <div class="stat rv"><div class="v">2019</div><p>Año de fundación de SAG</p></div>
     <div class="stat rv d1"><div class="v">6</div><p>Años consecutivos como firma Highly Recommended por Leaders League</p></div>
-    <div class="stat rv d2"><div class="v">${P('cifra')}</div><p>Casos atendidos</p></div>
-    <div class="stat rv d3"><div class="v">${P('cifra')}</div><p>Clientes en Colombia y Latinoamérica</p></div>
+    <div class="stat rv d2"><div class="v">+600</div><p>Casos atendidos</p></div>
+    <div class="stat rv d3"><div class="v">+150</div><p>Clientes que han confiado en SAG</p></div>
   </div>
 </div></section>`;
 
 const POSTS = [
-  ['22 ene 2026', 'Davos 2026: señales de alerta para la auditoría forense en Latinoamérica'],
-  ['22 nov 2025', 'Debida diligencia financiera forense en clubes de fútbol suramericanos'],
-  ['14 nov 2025', 'Auditoría forense y auditoría interna: una alianza estratégica para blindar la contratación pública'],
+  ['22 ene 2026', 'Davos 2026: señales de alerta para la auditoría forense en Latinoamérica', 'https://www.sagconsulting.co/2026/01/22/davos-2026-senales-de-alerta-para-la-auditoria-forense-en-latinoamerica-entre-el-dialogo-y-la-disrupcion-reflexiones-criticas-desde-la-vision-antifraude/'],
+  ['22 nov 2025', 'Debida diligencia financiera forense en clubes de fútbol suramericanos', 'https://www.sagconsulting.co/2025/11/22/debida-diligencia-financiera-forense-en-clubes-de-futbol-suramericanos-metodologia-y-mejores-practicas/'],
+  ['14 nov 2025', 'Auditoría forense y auditoría interna: una alianza estratégica para blindar la contratación pública', 'https://www.sagconsulting.co/2025/11/14/auditoria-forense-y-auditoria-interna-una-alianza-estrategica-para-blindar-la-contratacion-publica/'],
 ];
 const postsBlock = `
 <section class="sec paper2"><div class="wrap">
@@ -217,8 +217,7 @@ const postsBlock = `
     <div class="rv"><span class="eyebrow">Conocimiento</span><h2>Análisis <em>desde la práctica</em></h2></div>
     <p class="lead rv d1">Lo que vemos en los casos, convertido en criterio para directivos, abogados y oficiales de cumplimiento.</p>
   </div>
-  <div class="posts">${POSTS.map(([d, t], i) => `<a class="post rv${i ? ' d' + i : ''}" href="https://www.sagconsulting.co/#conocimiento"><span class="mono">${d}</span><h3>${t}</h3><span class="link">Leer artículo <span>→</span></span></a>`).join('')}</div>
-  <p class="rv" style="margin-top:2rem">${P('enlazar cada artículo a su URL definitiva')}</p>
+  <div class="posts">${POSTS.map(([d, t, u], i) => `<a class="post rv${i ? ' d' + i : ''}" href="${u}"><span class="mono">${d}</span><h3>${t}</h3><span class="link">Leer artículo <span>→</span></span></a>`).join('')}</div>
 </div></section>`;
 
 // ---------- Páginas ----------

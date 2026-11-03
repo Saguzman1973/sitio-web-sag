@@ -50,9 +50,6 @@ Los datos que faltan aparecen en el sitio resaltados en amarillo como `[PENDIENT
 |---|---|
 | Inicio | Fotografía profesional de Simón Guzmán |
 | Inicio | Validar o reemplazar la cita atribuida al socio fundador |
-| Inicio | Cifra de casos atendidos |
-| Inicio | Cifra de clientes en Colombia y Latinoamérica |
-| Inicio | Enlazar cada artículo de "Conocimiento" a su URL definitiva |
 | Nosotros | Fotografías del equipo |
 | Nosotros | Breve perfil de Alexandra Rodríguez |
 | Nosotros | Breve perfil de Yulieth Monroy |
@@ -60,6 +57,8 @@ Los datos que faltan aparecen en el sitio resaltados en amarillo como `[PENDIENT
 | Reconocimientos | Logos oficiales de cada reconocimiento |
 | Contacto | Dirección física (si se quiere publicar) |
 | Contacto | Conectar el formulario al correo comercial (hoy es solo visual) |
+
+Resueltos con datos de [www.sagconsulting.co](https://www.sagconsulting.co): cifras (+600 casos, +150 clientes) y URLs de los tres artículos de "Conocimiento". El sitio actual no publica los perfiles de Alexandra y Yulieth, el enlace de SAG Academy, la dirección física ni la cita de Simón, por lo que siguen pendientes.
 
 Otros puntos a revisar antes de publicar:
 
