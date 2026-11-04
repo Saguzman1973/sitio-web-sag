@@ -62,35 +62,51 @@ get_header(); ?>
         <button class="mem__btn" type="button" data-open="1" aria-haspopup="dialog">
           <span class="mem__ph"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/equipo/diego-480.webp' ); ?>" alt="Retrato de Diego Andrés Alarcón" width="480" height="480" loading="lazy"></span>
           <span class="mem__meta"><b>Diego Andrés Alarcón</b><i>Director de investigaciones forenses</i></span>
-          <span class="mem__tags"><em>Forense digital</em><em>Minería de datos</em></span>
+          <span class="mem__tags"><em>Forense digital</em><em>Minería de datos</em><em>Peritaje</em></span>
           <span class="mem__plus" aria-hidden="true">+</span>
         </button>
-        <div class="mem__full" hidden data-link="https://www.linkedin.com/in/diego-alarcon-98bb47175/"><p>Contador público.</p><p>Trabaja en auditoría forense y forense digital, con herramientas de minería, analítica y visualización de datos.</p></div>
+        <div class="mem__full" hidden data-link="https://www.linkedin.com/in/diego-alarcon-98bb47175/"><p>Contador público.</p><p>Trabaja en auditoría forense y forense digital, con herramientas de minería, analítica y visualización de datos.</p><p>Participa en asignaciones periciales y en investigaciones complejas: asegura y analiza evidencia digital con cadena de custodia, procesa grandes volúmenes de registros contables y transaccionales, y documenta el soporte técnico de los hallazgos que se incorporan a informes y dictámenes.</p><p>Apoya la automatización de pruebas analíticas y el seguimiento de los casos mediante tableros de control.</p></div>
       </li>
       <li class="mem reveal">
         <button class="mem__btn" type="button" data-open="2" aria-haspopup="dialog">
           <span class="mem__ph"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/equipo/andrea-480.webp' ); ?>" alt="Retrato de Andrea Sierra Sánchez" width="480" height="480" loading="lazy"></span>
           <span class="mem__meta"><b>Andrea Sierra Sánchez</b><i>Gerente senior de investigaciones forenses</i></span>
-          <span class="mem__tags"><em>Peritaje</em><em>Derecho y contaduría</em></span>
+          <span class="mem__tags"><em>Peritaje</em><em>Derecho y contaduría</em><em>Perjuicios</em></span>
           <span class="mem__plus" aria-hidden="true">+</span>
         </button>
-        <div class="mem__full" hidden data-link="https://www.linkedin.com/in/andrea-patricia-sierra-s%C3%A1nchez-a45042223/"><p>Abogada y contadora pública, especialista en gerencia tributaria y en instituciones jurídico procesales.</p><p>Elabora dictámenes periciales y análisis financieros de perjuicios, y coordina los asuntos legales de los encargos.</p></div>
+        <div class="mem__full" hidden data-link="https://www.linkedin.com/in/andrea-patricia-sierra-s%C3%A1nchez-a45042223/"><p>Abogada y contadora pública, especialista en gerencia tributaria y en instituciones jurídico procesales.</p><p>Elabora dictámenes periciales y análisis financieros de perjuicios, y coordina los asuntos legales de los encargos.</p><p>Participa en asignaciones periciales de principio a fin: define con los equipos legales el alcance y las preguntas del dictamen, cuantifica daño emergente y lucro cesante, verifica el cumplimiento de los requisitos del Código General del Proceso y apoya la contradicción de dictámenes y la tacha de documentos.</p><p>Integra la analítica de datos y los cruces automatizados de información al análisis contable y tributario que soporta cada cálculo.</p></div>
       </li>
       <li class="mem reveal">
         <button class="mem__btn" type="button" data-open="3" aria-haspopup="dialog">
           <span class="mem__ph"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/equipo/yamid-480.webp' ); ?>" alt="Retrato de Yamid Suárez Castellanos" width="480" height="480" loading="lazy"></span>
           <span class="mem__meta"><b>Yamid Suárez Castellanos</b><i>Gerente de analítica forense</i></span>
-          <span class="mem__tags"><em>Analítica</em><em>Automatización</em></span>
+          <span class="mem__tags"><em>Analítica</em><em>Automatización</em><em>Gobernanza de datos</em></span>
           <span class="mem__plus" aria-hidden="true">+</span>
         </button>
-        <div class="mem__full" hidden data-link="https://www.linkedin.com/in/yamid-daney-suarez-castellanos-811b55226/"><p>Ingeniero de sistemas.</p><p>Trabaja en minería y analítica de datos, automatización de procesos y herramientas de tecnología de la información.</p></div>
+        <div class="mem__full" hidden data-link="https://www.linkedin.com/in/yamid-daney-suarez-castellanos-811b55226/"><p>Ingeniero de sistemas.</p><p>Trabaja en minería y analítica de datos, automatización de procesos y herramientas de tecnología de la información.</p><p>Diseña y automatiza las pruebas que se aplican sobre el 100 % de los registros, construye tableros de alertas y visualización, y prepara la información que sustenta los hallazgos de investigaciones y asignaciones periciales, con trazabilidad desde la fuente.</p><p>Apoya a los clientes en gobernanza y calidad de datos, y en la extracción y preservación técnica de la información para su análisis.</p></div>
       </li>
     </ul>
-    <div class="seniors reveal">
-      <h3 class="seniors__t">Equipo senior</h3>
-      <ul class="sen">
-        <li class="sen__c"><span class="sen__ph"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/equipo/alexandra-480.webp' ); ?>" alt="Retrato de Alexandra Rodríguez" width="480" height="600" loading="lazy"></span><div><b>Alexandra Rodríguez</b><i>Senior de investigaciones forenses</i></div></li>
-        <li class="sen__c"><span class="sen__ph"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/equipo/yulieth-480.webp' ); ?>" alt="Retrato de Yulieth Monroy" width="480" height="600" loading="lazy"></span><div><b>Yulieth Monroy</b><i>Senior de investigaciones forenses</i></div></li>
+    <div class="seniors">
+      <h3 class="seniors__t reveal">Equipo senior</h3>
+      <ul class="team" data-stagger>
+      <li class="mem reveal">
+        <button class="mem__btn" type="button" data-open="4" aria-haspopup="dialog">
+          <span class="mem__ph"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/equipo/alexandra-480.webp' ); ?>" alt="Retrato de Alexandra Rodríguez" width="480" height="600" loading="lazy"></span>
+          <span class="mem__meta"><b>Alexandra Rodríguez</b><i>Senior de investigaciones forenses</i></span>
+          <span class="mem__tags"><em>Contabilidad e impuestos</em><em>NIIF y PCGA</em><em>Verificación de información</em></span>
+          <span class="mem__plus" aria-hidden="true">+</span>
+        </button>
+        <div class="mem__full" hidden data-link=""><p>Contadora pública de la Universidad Autónoma de Colombia, con diplomado en NIIF, MBA en Dirección y Administración de Empresas y máster en Finanzas.</p><p>Tiene más de 10 años de experiencia en el ámbito contable y tributario, con énfasis en la revisión y verificación de la información: inspección de cuentas contables, verificación de consecutivos y materialidad de los documentos, análisis y cruce de pagos de nómina y seguridad social, conciliaciones bancarias y cruce de partidas, circularización de cartera y proveedores, y revisión de impuestos, medios magnéticos nacionales y distritales e información reportada a superintendencias.</p><p>Ha trabajado bajo NIIF y PCGA en empresas de los sectores industrial y de servicios, y ha participado en la actualización de procedimientos y procesos internos. Es analítica, rigurosa y con sólida formación ética, orientada a detectar inconsistencias, sustentar hallazgos y aportar a la mejora de los procesos.</p></div>
+      </li>
+      <li class="mem reveal">
+        <button class="mem__btn" type="button" data-open="5" aria-haspopup="dialog">
+          <span class="mem__ph"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/equipo/yulieth-480.webp' ); ?>" alt="Retrato de Yulieth Monroy" width="480" height="600" loading="lazy"></span>
+          <span class="mem__meta"><b>Yulieth Monroy</b><i>Senior de investigaciones forenses</i></span>
+          <span class="mem__tags"><em>Peritaje</em><em>Auditoría forense</em><em>Contabilidad e impuestos</em></span>
+          <span class="mem__plus" aria-hidden="true">+</span>
+        </button>
+        <div class="mem__full" hidden data-link=""><p>Contadora pública de la Universidad Pedagógica y Tecnológica de Colombia (UPTC). Actualmente cursa la Especialización en Revisoría Fiscal y Auditoría de Cuentas.</p><p>Tiene más de cinco años de experiencia en contabilidad e impuestos, de los cuales tres con participación en peritajes, investigaciones complejas y auditorías forenses, con alcance pericial y contable-financieras, en entidades públicas y privadas.</p><p>Ha trabajado en los sectores cafetero, minero, comercial, salud (EPS e IPS), financiero (entidades bancarias) y factoring, entre otros. Maneja software contable como World Office, Helisa, Siigo, Syscafe y QuickBooks.</p></div>
+      </li>
       </ul>
     </div>
   </div>

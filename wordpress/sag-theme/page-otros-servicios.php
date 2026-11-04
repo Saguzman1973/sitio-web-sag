@@ -47,8 +47,8 @@ get_header(); ?>
         <ul class="svc__tags"><li>Cursos</li><li>Expertos del sector</li><li>Auditoría forense</li></ul>
       </div>
       <div class="feature__side">
-        <span class="pending">[PENDIENTE: enlace a SAG Academy]</span>
-        <a class="link" href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>"><span>Consultar por SAG Academy</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--solid" href="<?php echo esc_url( home_url( '/sag-academy/' ) ); ?>"><span>Ver los 21 cursos</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <span class="pending">[PENDIENTE: enlace a la plataforma de SAG Academy]</span>
       </div>
     </div>
   </div>

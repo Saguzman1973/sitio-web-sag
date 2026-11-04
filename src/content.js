@@ -50,15 +50,20 @@ const POSTS = [
 const TEAM = [
   { n: 'Mónica Vargas Ortega', r: 'CEO y socia', tags: ['Finanzas', 'Analítica de datos'], img: 'monica-480.webp', w: 480, h: 480, li: 'https://co.linkedin.com/in/monica-alejandra-vargas-ortega-84058b49',
     bio: ['Economista con especialización en finanzas de la Universidad del Rosario y MBA en dirección y administración de empresas de la Universidad Internacional de La Rioja (España), con formación en analítica de negocios de la escuela de negocios de la Universidad de Cambridge.', 'Más de 18 años de experiencia en el sector público y privado, con enfoque en auditoría, análisis financiero, estructuración de proyectos de control, minería de datos y visualización.', 'Es la CEO de SAG desde hace 8 años y lidera los procesos de tecnología: automatización, minería, analítica y visualización de datos, y auditoría de impuestos y parafiscales, a nivel nacional e internacional en países como Ecuador, México y Perú.'] },
-  { n: 'Diego Andrés Alarcón', r: 'Director de investigaciones forenses', tags: ['Forense digital', 'Minería de datos'], img: 'diego-480.webp', w: 480, h: 480, li: 'https://www.linkedin.com/in/diego-alarcon-98bb47175/',
-    bio: ['Contador público.', 'Trabaja en auditoría forense y forense digital, con herramientas de minería, analítica y visualización de datos.'] },
-  { n: 'Andrea Sierra Sánchez', r: 'Gerente senior de investigaciones forenses', tags: ['Peritaje', 'Derecho y contaduría'], img: 'andrea-480.webp', w: 480, h: 480, li: 'https://www.linkedin.com/in/andrea-patricia-sierra-s%C3%A1nchez-a45042223/',
-    bio: ['Abogada y contadora pública, especialista en gerencia tributaria y en instituciones jurídico procesales.', 'Elabora dictámenes periciales y análisis financieros de perjuicios, y coordina los asuntos legales de los encargos.'] },
-  { n: 'Yamid Suárez Castellanos', r: 'Gerente de analítica forense', tags: ['Analítica', 'Automatización'], img: 'yamid-480.webp', w: 480, h: 480, li: 'https://www.linkedin.com/in/yamid-daney-suarez-castellanos-811b55226/',
-    bio: ['Ingeniero de sistemas.', 'Trabaja en minería y analítica de datos, automatización de procesos y herramientas de tecnología de la información.'] },
+  { n: 'Diego Andrés Alarcón', r: 'Director de investigaciones forenses', tags: ['Forense digital', 'Minería de datos', 'Peritaje'], img: 'diego-480.webp', w: 480, h: 480, li: 'https://www.linkedin.com/in/diego-alarcon-98bb47175/',
+    bio: ['Contador público.', 'Trabaja en auditoría forense y forense digital, con herramientas de minería, analítica y visualización de datos.', 'Participa en asignaciones periciales y en investigaciones complejas: asegura y analiza evidencia digital con cadena de custodia, procesa grandes volúmenes de registros contables y transaccionales, y documenta el soporte técnico de los hallazgos que se incorporan a informes y dictámenes.', 'Apoya la automatización de pruebas analíticas y el seguimiento de los casos mediante tableros de control.'] },
+  { n: 'Andrea Sierra Sánchez', r: 'Gerente senior de investigaciones forenses', tags: ['Peritaje', 'Derecho y contaduría', 'Perjuicios'], img: 'andrea-480.webp', w: 480, h: 480, li: 'https://www.linkedin.com/in/andrea-patricia-sierra-s%C3%A1nchez-a45042223/',
+    bio: ['Abogada y contadora pública, especialista en gerencia tributaria y en instituciones jurídico procesales.', 'Elabora dictámenes periciales y análisis financieros de perjuicios, y coordina los asuntos legales de los encargos.', 'Participa en asignaciones periciales de principio a fin: define con los equipos legales el alcance y las preguntas del dictamen, cuantifica daño emergente y lucro cesante, verifica el cumplimiento de los requisitos del Código General del Proceso y apoya la contradicción de dictámenes y la tacha de documentos.', 'Integra la analítica de datos y los cruces automatizados de información al análisis contable y tributario que soporta cada cálculo.'] },
+  { n: 'Yamid Suárez Castellanos', r: 'Gerente de analítica forense', tags: ['Analítica', 'Automatización', 'Gobernanza de datos'], img: 'yamid-480.webp', w: 480, h: 480, li: 'https://www.linkedin.com/in/yamid-daney-suarez-castellanos-811b55226/',
+    bio: ['Ingeniero de sistemas.', 'Trabaja en minería y analítica de datos, automatización de procesos y herramientas de tecnología de la información.', 'Diseña y automatiza las pruebas que se aplican sobre el 100 % de los registros, construye tableros de alertas y visualización, y prepara la información que sustenta los hallazgos de investigaciones y asignaciones periciales, con trazabilidad desde la fuente.', 'Apoya a los clientes en gobernanza y calidad de datos, y en la extracción y preservación técnica de la información para su análisis.'] },
 ];
-// Equipo senior: tarjeta compacta (foto, nombre y cargo), como en el sitio actual. Si se quiere un perfil, agregar "bio" y pasar a TEAM.
-const SENIORS = [['Alexandra Rodríguez', 'alexandra-480.webp'], ['Yulieth Monroy', 'yulieth-480.webp']];
+// Equipo senior: perfiles tomados de las hojas de vida entregadas por SAG (noviembre de 2026).
+const SENIORS = [
+  { n: 'Alexandra Rodríguez', r: 'Senior de investigaciones forenses', tags: ['Contabilidad e impuestos', 'NIIF y PCGA', 'Verificación de información'], img: 'alexandra-480.webp', w: 480, h: 600, li: '',
+    bio: ['Contadora pública de la Universidad Autónoma de Colombia, con diplomado en NIIF, MBA en Dirección y Administración de Empresas y máster en Finanzas.', 'Tiene más de 10 años de experiencia en el ámbito contable y tributario, con énfasis en la revisión y verificación de la información: inspección de cuentas contables, verificación de consecutivos y materialidad de los documentos, análisis y cruce de pagos de nómina y seguridad social, conciliaciones bancarias y cruce de partidas, circularización de cartera y proveedores, y revisión de impuestos, medios magnéticos nacionales y distritales e información reportada a superintendencias.', 'Ha trabajado bajo NIIF y PCGA en empresas de los sectores industrial y de servicios, y ha participado en la actualización de procedimientos y procesos internos. Es analítica, rigurosa y con sólida formación ética, orientada a detectar inconsistencias, sustentar hallazgos y aportar a la mejora de los procesos.'] },
+  { n: 'Yulieth Monroy', r: 'Senior de investigaciones forenses', tags: ['Peritaje', 'Auditoría forense', 'Contabilidad e impuestos'], img: 'yulieth-480.webp', w: 480, h: 600, li: '',
+    bio: ['Contadora pública de la Universidad Pedagógica y Tecnológica de Colombia (UPTC). Actualmente cursa la Especialización en Revisoría Fiscal y Auditoría de Cuentas.', 'Tiene más de cinco años de experiencia en contabilidad e impuestos, de los cuales tres con participación en peritajes, investigaciones complejas y auditorías forenses, con alcance pericial y contable-financieras, en entidades públicas y privadas.', 'Ha trabajado en los sectores cafetero, minero, comercial, salud (EPS e IPS), financiero (entidades bancarias) y factoring, entre otros. Maneja software contable como World Office, Helisa, Siigo, Syscafe y QuickBooks.'] },
+];
 
 const ADV = [
   ['Evidencia asegurada desde el primer día', 'Identificamos, obtenemos y aseguramos los elementos materiales probatorios, para que el informe pueda presentarse ante una autoridad.', 'Cadena de custodia'],
@@ -76,4 +81,65 @@ const STEPS = [
   ['Informe y dictamen', 'Entregamos un informe estructurado, con posible alcance pericial, y acompañamos el proceso hasta la sustentación en audiencia.'],
 ];
 
-module.exports = { SVC, AREAS, SECTORES, VALORES, POSTS, TEAM, SENIORS, ADV, STEPS, ACADEMY_URL, ADDRESS };
+// SAG Academy: cursos cortos certificados por SAG como educación informal (menos de 160 horas, no conducen a título).
+// Cada curso: [número, nombre, modalidad, horas, nivel, contenido].
+const ACADEMY = {
+  intro: 'Cursos cortos de educación informal sobre auditoría forense, analítica de datos, forense digital, peritaje y cumplimiento, diseñados a partir de la práctica de SAG. Al aprobarlos, SAG expide un certificado.',
+  modes: [
+    ['Asincrónico', 'A su ritmo y en línea: videos cortos, lecturas, plantillas y evaluaciones.'],
+    ['Sincrónico', 'En vivo, virtual o presencial: talleres con casos y espacio para preguntas.'],
+    ['Mixto', 'Contenido a su ritmo y sesiones en vivo para trabajar casos y resolver dudas.'],
+  ],
+  rules: [
+    ['Cursos asincrónicos', 'Aprobar la evaluación final con 80 % o más.'],
+    ['Cursos sincrónicos y mixtos', 'Asistir al 80 % de las sesiones y aprobar el taller o caso.'],
+    ['Rutas de certificación', 'Aprobar todos los cursos de la ruta y el caso integrador.'],
+  ],
+  lines: [
+    ['auditoria-forense', 'Auditoría forense', [
+      ['01', 'Fundamentos de auditoría forense', 'Asincrónico', 12, 'Básico', 'Fraude, corrupción y abuso de confianza; triángulo del fraude; ciclo de una investigación; NIA 240.'],
+      ['02', 'Investigación de fraude: del indicio al informe', 'Mixto', 24, 'Intermedio', 'Hipótesis, plan de trabajo, recaudo de evidencia y cadena de custodia, cuantificación e informe.'],
+      ['03', 'Evaluación de riesgo de fraude', 'Sincrónico', 16, 'Intermedio', 'Esquemas y escenarios de fraude, matriz de riesgos y controles, COSO 2013 y guía COSO/ACFE.'],
+      ['04', 'Auditoría forense de estados financieros', 'Mixto', 20, 'Intermedio', 'Ingresos sobreestimados, manipulación de costos, pasivos ocultos y fraude en nómina y pagos.'],
+      ['05', 'Entrevista investigativa', 'Sincrónico', 12, 'Intermedio', 'Planeación, técnicas, documentación y debido proceso, con ejercicios de simulación.'],
+    ]],
+    ['analitica', 'Analítica de datos forense e IA', [
+      ['06', 'Excel forense: pruebas sobre el 100 % de los datos', 'Asincrónico', 10, 'Básico', 'Duplicados, fraccionamiento, Ley de Benford y cruces entre bases.'],
+      ['07', 'Analítica forense con Power BI y Python', 'Mixto', 32, 'Intermedio', 'Minería, visualización, tableros de alertas y automatización de pruebas.'],
+      ['08', 'Monitoreo continuo y alertas tempranas', 'Sincrónico', 16, 'Avanzado', 'Reglas e indicadores de riesgo, umbrales y priorización de alertas.'],
+      ['09', 'Gobernanza y calidad de datos para auditoría', 'Asincrónico', 8, 'Básico', 'Políticas, roles y trazabilidad: el dato como evidencia.'],
+      ['10', 'Inteligencia artificial en auditoría forense y peritaje', 'Mixto', 12, 'Intermedio', 'Usos y límites, validación de resultados, sesgos y confidencialidad de la evidencia.'],
+    ]],
+    ['forense-digital', 'Forense digital y fuentes abiertas', [
+      ['11', 'Evidencia digital y cadena de custodia', 'Mixto', 16, 'Intermedio', 'ISO/IEC 27037, imágenes forenses y hash, Ley 527 de 1999 y Ley 1273 de 2009, con laboratorio en vivo.'],
+      ['12', 'OSINT y SOCMINT para investigaciones corporativas', 'Sincrónico', 12, 'Intermedio', 'Búsquedas avanzadas, redes sociales, registros públicos en Colombia y protección de datos (Ley 1581 de 2012).'],
+      ['13', 'Debida diligencia de contrapartes', 'Asincrónico', 8, 'Básico', 'Listas restrictivas, señales de alerta y documentación del análisis de terceros.'],
+    ]],
+    ['peritaje', 'Peritaje y litigio', [
+      ['14', 'Dictamen pericial contable y financiero', 'Mixto', 20, 'Avanzado', 'Artículos 226 a 235 del Código General del Proceso, estructura, anexos e imparcialidad del perito.'],
+      ['15', 'Cuantificación de perjuicios: daño emergente y lucro cesante', 'Sincrónico', 16, 'Avanzado', 'Métodos, supuestos, actualización de valores y casos.'],
+      ['16', 'Contradicción de dictámenes y sustentación en audiencia', 'Sincrónico', 12, 'Avanzado', 'Revisión técnica del dictamen contrario, preparación del interrogatorio y tacha de documentos, con audiencia simulada.'],
+    ]],
+    ['cumplimiento', 'Cumplimiento, ética y sector público', [
+      ['17', 'SARLAFT, SAGRILAFT y PTEE en la práctica', 'Mixto', 16, 'Intermedio', 'Matrices de riesgo, debida diligencia, señales de alerta y reportes.'],
+      ['18', 'Control interno antifraude y canales de denuncia', 'Asincrónico', 10, 'Básico', 'COSO 2013, ISO 37001, gestión de líneas éticas y comité de ética.'],
+      ['19', 'Riesgos de corrupción en la contratación pública', 'Mixto', 16, 'Intermedio', 'Señales de alerta en SECOP, colusión y fraccionamiento, Ley 1474 de 2011 y Ley 2195 de 2022.'],
+      ['20', 'Auditoría de impuestos y aportes parafiscales con analítica', 'Mixto', 16, 'Intermedio', 'Cruces de información, inconsistencias y preparación ante fiscalizaciones.'],
+    ]],
+    ['ejecutivos', 'Programas ejecutivos', [
+      ['21', 'Fraude y corrupción: lo que una junta directiva debe preguntar', 'Sincrónico', 4, 'Ejecutivo', 'Responsabilidades, señales de alerta y cómo actuar ante un incidente.'],
+    ]],
+  ],
+  routes: [
+    ['Auditoría Forense', '01 a 05', 84, 'Caso integral con informe de investigación'],
+    ['Analítica Forense de Datos', '06 a 10', 78, 'Proyecto con datos y tablero de alertas'],
+    ['Peritaje Contable y Financiero', '04, 14, 15 y 16', 68, 'Dictamen simulado sustentado ante un panel'],
+    ['Cumplimiento y Prevención del Fraude', '13, 17, 18 y 19', 50, 'Diagnóstico y plan de cumplimiento de un caso'],
+    ['Investigación Digital', '11, 12 y 13', 36, 'Investigación en fuentes abiertas con cadena de custodia'],
+  ],
+  webinar: ['Casos y tendencias', 'Webinar mensual abierto, de una hora y media, sobre fraude bancario, inteligencia artificial, contratación pública y cumplimiento. Se entrega constancia de asistencia.'],
+  legal: 'Los cursos y las rutas de SAG Academy son educación informal: duran menos de 160 horas y no conducen a título académico. Al aprobarlos, SAG expide un certificado.',
+};
+ACADEMY.count = ACADEMY.lines.reduce((n, l) => n + l[2].length, 0);
+
+module.exports = { SVC, AREAS, SECTORES, VALORES, POSTS, TEAM, SENIORS, ADV, STEPS, ACADEMY_URL, ADDRESS, ACADEMY };

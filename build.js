@@ -29,7 +29,7 @@ const NAV = [
 ];
 
 // Contenido (servicios, artículos, equipo, ventajas y método): src/content.js
-const { SVC, AREAS, SECTORES, VALORES, POSTS, TEAM, SENIORS, ADV, STEPS, ACADEMY_URL, ADDRESS } = require('./src/content.js');
+const { SVC, AREAS, SECTORES, VALORES, POSTS, TEAM, SENIORS, ADV, STEPS, ACADEMY_URL, ADDRESS, ACADEMY } = require('./src/content.js');
 
 // ---------- Íconos ----------
 const svg = (d) => `<svg viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`;
@@ -79,7 +79,8 @@ const footer = (x) => `
         <li><a href="${x.L('auditoria-forense')}">Auditoría forense</a></li>
         <li><a href="${x.L('analitica-de-datos')}">Analítica de datos forense</a></li>
         <li><a href="${x.L('dictamenes-periciales')}">Dictámenes periciales</a></li>
-        <li><a href="${x.L('otros-servicios')}">Otros servicios</a></li></ul></div>
+        <li><a href="${x.L('otros-servicios')}">Otros servicios</a></li>
+        <li><a href="${x.L('sag-academy')}">SAG Academy</a></li></ul></div>
       <div><h2 class="foot__h">Firma</h2><ul>
         <li><a href="${x.L('nosotros')}">Nosotros y equipo</a></li>
         <li><a href="${x.L('reconocimientos')}">Reconocimientos</a></li>
@@ -400,6 +401,17 @@ ${pageHero(x, {
 </section>
 ${cta(x)}`;
 
+const memCard = (x, m, i) => `
+      <li class="mem reveal">
+        <button class="mem__btn" type="button" data-open="${i}" aria-haspopup="dialog">
+          <span class="mem__ph"><img src="${x.A('img/equipo/' + m.img)}" alt="Retrato de ${m.n}" width="${m.w}" height="${m.h}" loading="lazy"></span>
+          <span class="mem__meta"><b>${m.n}</b><i>${m.r}</i></span>
+          <span class="mem__tags">${m.tags.map((t) => `<em>${t}</em>`).join('')}</span>
+          <span class="mem__plus" aria-hidden="true">+</span>
+        </button>
+        <div class="mem__full" hidden data-link="${m.li || ''}">${m.bio.map((p) => `<p>${p}</p>`).join('')}</div>
+      </li>`;
+
 // ---------- Páginas ----------
 const pages = {};
 
@@ -557,8 +569,8 @@ ${pageHero(x, {
         <ul class="svc__tags">${SVC['15'].tags.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
       </div>
       <div class="feature__side">
-        ${ACADEMY_URL ? `<a class="btn btn--solid" href="${ACADEMY_URL}" target="_blank" rel="noopener"><span>Ir a SAG Academy</span>${I.up}</a>` : P('enlace a SAG Academy')}
-        <a class="link" href="${x.L('contacto')}"><span>Consultar por SAG Academy</span>${I.arr}</a>
+        <a class="btn btn--solid" href="${x.L('sag-academy')}"><span>Ver los ${ACADEMY.count} cursos</span>${I.arr}</a>
+        ${ACADEMY_URL ? `<a class="link" href="${ACADEMY_URL}" target="_blank" rel="noopener"><span>Ir a la plataforma</span>${I.up}</a>` : P('enlace a la plataforma de SAG Academy')}
       </div>
     </div>
   </div>
@@ -586,21 +598,11 @@ ${pageHero(x, {
   <div class="wrap">
     ${secHead('El equipo', 'Experiencia que <b>sostiene cada dictamen.</b>', 'Un equipo multidisciplinario, con formación en contaduría, derecho, economía e ingeniería de sistemas, liderado por un socio fundador con más de 30 años en investigación de fraude.')}
     ${founderBlock(x, false)}
-    <ul class="team" data-stagger>${TEAM.map((m, i) => `
-      <li class="mem reveal">
-        <button class="mem__btn" type="button" data-open="${i}" aria-haspopup="dialog">
-          <span class="mem__ph"><img src="${x.A('img/equipo/' + m.img)}" alt="Retrato de ${m.n}" width="${m.w}" height="${m.h}" loading="lazy"></span>
-          <span class="mem__meta"><b>${m.n}</b><i>${m.r}</i></span>
-          <span class="mem__tags">${m.tags.map((t) => `<em>${t}</em>`).join('')}</span>
-          <span class="mem__plus" aria-hidden="true">+</span>
-        </button>
-        <div class="mem__full" hidden data-link="${m.li}">${m.bio.map((p) => `<p>${p}</p>`).join('')}</div>
-      </li>`).join('')}
+    <ul class="team" data-stagger>${TEAM.map((m, i) => memCard(x, m, i)).join('')}
     </ul>
-    <div class="seniors reveal">
-      <h3 class="seniors__t">Equipo senior</h3>
-      <ul class="sen">${SENIORS.map(([n, img]) => `
-        <li class="sen__c"><span class="sen__ph"><img src="${x.A('img/equipo/' + img)}" alt="Retrato de ${n}" width="480" height="600" loading="lazy"></span><div><b>${n}</b><i>Senior de investigaciones forenses</i></div></li>`).join('')}
+    <div class="seniors">
+      <h3 class="seniors__t reveal">Equipo senior</h3>
+      <ul class="team" data-stagger>${SENIORS.map((m, i) => memCard(x, m, TEAM.length + i)).join('')}
       </ul>
     </div>
   </div>
@@ -658,6 +660,52 @@ ${pageHero(x, {
       <div class="arow reveal"><span class="arow__y">2024</span><div><h3>Best Fraud Detection Consulting Firm</h3><p>Firma de consultoría en detección de fraude.</p></div><span class="arow__t">Management Consulting Awards</span></div>
     </div>
     <p class="lead reveal" style="margin-top:28px">Los premios Management Consulting Awards son otorgados por Wealth &amp; Finance International.</p>
+  </div>
+</section>
+${cta(x)}` };
+
+pages['sag-academy'] = { title: 'SAG Academy | SAG Assessment & Consulting', desc: 'Cursos cortos de auditoría forense, analítica de datos, forense digital, peritaje y cumplimiento, sincrónicos y asincrónicos, con certificado SAG (educación informal).', body: (x) => `
+${pageHero(x, {
+  cls: 'phero--solo', crumb: 'SAG Academy', label: 'Formación · Educación informal',
+  title: 'SAG <b>Academy</b>',
+  lead: ACADEMY.intro,
+  actions: `<a class="btn btn--solid" href="#cursos"><span>Ver los cursos</span>${I.arr}</a><a class="btn btn--ghost" href="${x.L('contacto')}"><span>Consultar fechas y valores</span></a>`,
+  visual: ring(`<b data-count="${ACADEMY.count}">${ACADEMY.count}</b><span>cursos cortos</span>`),
+})}
+<section class="sec sec--sm sec--dark">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="wrap">
+    ${secHead('Modalidades', 'Sincrónicos, asincrónicos <b>y mixtos.</b>', '', true, true)}
+    <div class="when when--3" data-stagger>${ACADEMY.modes.map(([t, d]) => `<div class="reveal"><span>${t}</span><p>${d}</p></div>`).join('')}</div>
+    <h3 class="sub-h reveal">Cómo se obtiene el certificado SAG</h3>
+    <div class="when when--3" data-stagger>${ACADEMY.rules.map(([t, d]) => `<div class="reveal"><span>${t}</span><p>${d}</p></div>`).join('')}</div>
+  </div>
+</section>
+<section class="sec sec--bone" id="cursos">
+  <div class="wrap">
+    ${secHead('Catálogo', 'Cursos <b>cortos.</b>', 'Cada curso se toma por separado. Las rutas reúnen varios cursos y terminan con un caso integrador.', false, true)}
+    ${ACADEMY.lines.map(([slug, t, cs]) => `
+    <div class="cat-line" id="${slug}">
+      <h3 class="cat-line__t reveal">${t}</h3>
+      <ul class="cat">${cs.map(([n, ct, mod, h, lvl, d]) => `
+        <li class="reveal"><span class="cat__n">${n}</span><div><h4>${esc(ct)}</h4><p>${esc(d)}</p></div><span class="cat__m">${mod}</span><span class="cat__h">${h} horas</span><span class="cat__l">${lvl}</span></li>`).join('')}
+      </ul>
+    </div>`).join('')}
+  </div>
+</section>
+<section class="sec sec--white" id="rutas">
+  <div class="wrap">
+    ${secHead('Rutas de certificación', 'Varios cursos, <b>un certificado.</b>', '', false, true)}
+    <ul class="svc" data-stagger>${ACADEMY.routes.map(([t, cs, h, f], i) => `
+      <li class="svc__c reveal"><div class="svc__top"><span class="svc__n">Ruta ${pad(i + 1)}</span><span class="svc__cat">${h} horas</span></div><h3>${t}</h3><p>Cursos ${cs}.</p><ul class="svc__tags"><li>${f}</li></ul></li>`).join('')}
+    </ul>
+  </div>
+</section>
+<section class="sec sec--sm sec--bone">
+  <div class="wrap acad-note">
+    <div class="reveal"><span class="lbl lbl--d">Educación informal</span><p class="lead">${ACADEMY.legal}</p></div>
+    <div class="reveal"><span class="lbl lbl--d">Ciclo abierto</span><h3>${ACADEMY.webinar[0]}</h3><p>${ACADEMY.webinar[1]}</p>
+      <p style="margin-top:18px">${ACADEMY_URL ? `<a class="link link--d" href="${ACADEMY_URL}" target="_blank" rel="noopener"><span>Ir a la plataforma de SAG Academy</span>${I.up}</a>` : P('enlace a la plataforma de SAG Academy')}</p></div>
   </div>
 </section>
 ${cta(x)}` };
@@ -849,7 +897,7 @@ ${p.body(x)}
 1. En WordPress: Apariencia > Temas > Añadir nuevo > Subir tema > sag-theme.zip > Instalar.
    Hágalo PRIMERO en un sitio de pruebas (staging), no en producción.
 2. Cree estas páginas (Páginas > Añadir) con exactamente estos slugs. El contenido puede quedar vacío:
-   auditoria-forense, analitica-de-datos, dictamenes-periciales, otros-servicios, nosotros, reconocimientos, contacto
+   auditoria-forense, analitica-de-datos, dictamenes-periciales, otros-servicios, sag-academy, nosotros, reconocimientos, contacto
    El tema les aplica su diseño automáticamente (archivos page-<slug>.php).
 3. Ajustes > Lectura > "Una página estática" > Página de inicio: cualquier página llamada "Inicio".
    (front-page.php dibuja el inicio.) Opcional: página de entradas "Conocimiento" para los artículos.

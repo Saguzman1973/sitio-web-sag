@@ -1,7 +1,7 @@
 // Genera la PROPUESTA B "Expediente" (propuesta-b/) desde src-b/ y el contenido compartido de src/content.js.
 // Imágenes, fotos del equipo y video: src/assets/. Fuentes: src-b/fonts/. Mapa: src-b/mapa-latam.json.
 const fs = require('fs'), path = require('path');
-const { SVC, AREAS, SECTORES, POSTS, TEAM, SENIORS, STEPS, ACADEMY_URL, ADDRESS } = require('./src/content.js');
+const { SVC, AREAS, SECTORES, POSTS, TEAM, SENIORS, STEPS, ACADEMY_URL, ADDRESS, ACADEMY } = require('./src/content.js');
 const OUT = path.join(__dirname, 'propuesta-b');
 const SRC = path.join(__dirname, 'src-b');
 const P = (t) => `<span class="pending">[PENDIENTE: ${t}]</span>`;
@@ -17,7 +17,7 @@ const C = {
   ia: 'Algunas imágenes y el video de fondo fueron generados con inteligencia artificial y no representan clientes ni instalaciones reales.',
 };
 
-const NAV = [['experticia', 'Experticia', '01'], ['equipo', 'Equipo', '02'], ['resultados', 'Resultados', '03'], ['contacto', 'Contacto', '04']];
+const NAV = [['experticia', 'Experticia', '01'], ['equipo', 'Equipo', '02'], ['resultados', 'Resultados', '03'], ['academy', 'Academy', '04'], ['contacto', 'Contacto', '05']];
 const svg = (d) => `<svg viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`;
 const I = { arr: svg('<path d="M5 12h14M13 6l6 6-6 6"/>'), up: svg('<path d="M7 17 17 7M8 7h9v9"/>') };
 const btn = (href, text, cls = '', extra = '') => `<a class="btn ${cls}" href="${href}"${extra}>${text}<i>${I.arr}</i></a>`;
@@ -30,9 +30,9 @@ const SIMON = {
   n: 'Simón Guzmán Guerrero', r: 'Socio fundador', tags: ['MBA', 'CGAP', 'CFCS', 'Avaluador acreditado'], img: 'equipo/simon-900.webp', li: C.liSimon,
   bio: ['Economista, especialista en Administración Financiera y control fiscal, con máster en dirección y administración de empresas. Auditor forense con más de 30 años de experiencia en investigación de fraude, recuperación de activos y gobierno de organizaciones públicas y privadas en Colombia y Latinoamérica.', 'Actúa como perito ante jueces y tribunales. Es profesor de auditoría forense en la Pontificia Universidad Javeriana y autor de libros sobre la materia.'],
 };
-const PEOPLE = [SIMON, ...TEAM.map((m) => ({ ...m, img: 'equipo/' + m.img }))];
+// Equipo directivo y senior, todos con perfil completo.
+const PEOPLE = [SIMON, ...[...TEAM, ...SENIORS].map((m) => ({ ...m, img: 'equipo/' + m.img }))];
 const peopleJson = JSON.stringify(PEOPLE.map((m) => ({ n: m.n, r: m.r, tags: m.tags, img: A('img/' + m.img), li: m.li, bio: m.bio }))).replace(/</g, '\\u003c');
-const SEN = SENIORS.map(([n, img]) => ({ n, r: 'Senior de investigaciones forenses', img: 'equipo/' + img }));
 
 // ---------- Plantillas compartidas ----------
 const header = (cur) => `
@@ -241,15 +241,10 @@ const roster = () => `
   <div class="roster__h mono"><span>Equipo directivo y senior</span><span>Toque un nombre para ver el perfil</span></div>
   ${PEOPLE.slice(1).map((m, i) => `
   <button class="rrow" type="button" data-person="${i + 1}" data-img="${A('img/' + m.img)}" data-cursor="Perfil">
-    <span class="rrow__n">${pad(i + 2)}</span><span class="rrow__ph"><img src="${A('img/' + m.img)}" alt="" width="480" height="480" loading="lazy"></span>
+    <span class="rrow__n">${pad(i + 2)}</span><span class="rrow__ph"><img src="${A('img/' + m.img)}" alt="" width="${m.w}" height="${m.h}" loading="lazy"></span>
     <span class="rrow__name">${m.n}</span><span class="rrow__role">${m.r}</span>
     <span class="rrow__tags">${m.tags.map((t) => `<span>${t}</span>`).join('')}</span><span class="rrow__go">${I.up}</span>
   </button>`).join('')}
-  ${SEN.map((m, i) => `
-  <div class="rrow" data-img="${A('img/' + m.img)}">
-    <span class="rrow__n">${pad(PEOPLE.length + i + 1)}</span><span class="rrow__ph"><img src="${A('img/' + m.img)}" alt="" width="480" height="600" loading="lazy"></span>
-    <span class="rrow__name">${m.n}</span><span class="rrow__role">${m.r}</span><span class="rrow__tags"><span>Investigación forense</span></span><span></span>
-  </div>`).join('')}
 </div>
 <div class="rprev" aria-hidden="true"><img src="${A('img/' + PEOPLE[1].img)}" alt="" width="480" height="480" loading="lazy"></div>`;
 
@@ -400,7 +395,7 @@ ${phead({ crumb: 'Experticia', h1: ['Quince servicios,', '<em>un solo método.</
     <ul class="sv">${SVCS.map((s) => `
       <li class="sv__row" data-cat="${slug(s.c)}">
         <button class="sv__btn" type="button" aria-expanded="false"><span class="sv__n">${s.n}</span><span class="sv__t">${esc(s.t)}</span><span class="sv__c">${esc(s.c)}</span><span class="sv__i" aria-hidden="true">+</span></button>
-        <div class="sv__panel"><div><div class="sv__inner"><p>${esc(s.d)}</p><ul>${s.tags.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>${s.n === '15' ? (ACADEMY_URL ? `<a class="ulink" href="${ACADEMY_URL}" target="_blank" rel="noopener">Ir a SAG Academy ${I.up}</a>` : P('enlace a SAG Academy')) : ''}</div></div></div>
+        <div class="sv__panel"><div><div class="sv__inner"><p>${esc(s.d)}</p><ul>${s.tags.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>${s.n === '15' ? `<a class="ulink" href="academy.html">Ver los ${ACADEMY.count} cursos ${I.up}</a>` : ''}</div></div></div>
       </li>`).join('')}
     </ul>
   </div>
@@ -438,15 +433,10 @@ ${phead({ crumb: 'Equipo', h1: ['Los investigadores', '<em>detrás de cada caso.
     ${shead('§ 02', 'Equipo directivo y senior', ['Quienes llevan', '<em>su caso.</em>'], 'Contadores, economistas, abogados e ingenieros que trabajan juntos sobre el mismo expediente.')}
     <div class="people" data-stagger>${PEOPLE.slice(1).map((m, i) => `
       <button class="pcard rv" type="button" data-person="${i + 1}" data-cursor="Perfil">
-        <span class="pcard__ph"><img src="${A('img/' + m.img)}" alt="Retrato de ${m.n}" width="480" height="480" loading="lazy"><span class="mono">${pad(i + 2)}</span></span>
+        <span class="pcard__ph"><img src="${A('img/' + m.img)}" alt="Retrato de ${m.n}" width="${m.w}" height="${m.h}" loading="lazy"><span class="mono">${pad(i + 2)}</span></span>
         <span class="pcard__meta"><span><b>${m.n}</b><i>${m.r}</i></span><span class="pcard__plus" aria-hidden="true">+</span></span>
         <span class="pcard__tags">${m.tags.map((t) => `<span>${t}</span>`).join('')}</span>
-      </button>`).join('')}${SEN.map((m, i) => `
-      <div class="pcard rv">
-        <span class="pcard__ph"><img src="${A('img/' + m.img)}" alt="Retrato de ${m.n}" width="480" height="600" loading="lazy"><span class="mono">${pad(PEOPLE.length + i + 1)}</span></span>
-        <span class="pcard__meta"><span><b>${m.n}</b><i>${m.r}</i></span></span>
-        <span class="pcard__tags"><span>Investigación forense</span></span>
-      </div>`).join('')}
+      </button>`).join('')}
     </div>
     ${DISC}
   </div>
@@ -485,6 +475,47 @@ ${coverBlock('§ 03')}
           <div><dt>Resultado</dt><dd>${P('resultado verificable y autorizado para publicar')}</dd></div>
         </dl>
       </article>`).join('')}
+    </div>
+  </div>
+</section>
+${cta()}` };
+
+pages.academy = { title: 'SAG Academy | SAG Assessment & Consulting', desc: 'Cursos cortos de auditoría forense, analítica de datos, forense digital, peritaje y cumplimiento, sincrónicos y asincrónicos, con certificado SAG (educación informal).', body: () => `
+${phead({ crumb: 'SAG Academy', h1: ['Cursos cortos', '<em>con certificado SAG.</em>'], lead: ACADEMY.intro })}
+<section class="sec sec--ink">
+  <div class="wrap">
+    ${shead('§ 01', 'Modalidades', ['Sincrónicos, asincrónicos', '<em>y mixtos.</em>'], '', true)}
+    <div class="vals vals--3" data-stagger>${ACADEMY.modes.map(([t, d], i) => `<div class="rv"><span class="mono">${pad(i + 1)}</span><h3>${t}</h3><p>${d}</p></div>`).join('')}</div>
+  </div>
+</section>
+<section class="sec" id="cursos">
+  <div class="wrap">
+    ${shead('§ 02', 'Catálogo', [`${ACADEMY.count} cursos`, '<em>cortos.</em>'], 'Filtre por línea y abra cada curso para ver qué cubre. Todos se pueden tomar por separado.')}
+    <div class="filt rv" role="group" aria-label="Filtrar cursos por línea">
+      <button type="button" data-f="todos" aria-pressed="true">Todos<i></i></button>${ACADEMY.lines.map(([s, t]) => `<button type="button" data-f="${s}" aria-pressed="false">${t}<i></i></button>`).join('')}
+    </div>
+    <ul class="sv">${ACADEMY.lines.map(([s, t, cs]) => cs.map(([n, ct, mod, h, lvl, d]) => `
+      <li class="sv__row" data-cat="${s}">
+        <button class="sv__btn" type="button" aria-expanded="false"><span class="sv__n">${n}</span><span class="sv__t">${esc(ct)}</span><span class="sv__c">${mod} · ${h} h</span><span class="sv__i" aria-hidden="true">+</span></button>
+        <div class="sv__panel"><div><div class="sv__inner"><p>${esc(d)}</p><ul><li>${t}</li><li>${mod}</li><li>${h} horas</li><li>Nivel ${lvl.toLowerCase()}</li></ul></div></div></div>
+      </li>`).join('')).join('')}
+    </ul>
+  </div>
+</section>
+<section class="sec sec--paper2" id="certificado">
+  <div class="wrap">
+    ${shead('§ 03', 'Certificado SAG', ['Cómo se obtiene', '<em>el certificado.</em>'], ACADEMY.legal)}
+    <dl class="trail rv">${ACADEMY.rules.map(([t, d]) => `<div><dt>${t}</dt><dd>${d}</dd></div>`).join('')}</dl>
+  </div>
+</section>
+<section class="sec" id="rutas">
+  <div class="wrap">
+    ${shead('§ 04', 'Rutas de certificación', ['Varios cursos,', '<em>un certificado.</em>'], 'Cada ruta reúne cursos de una misma línea y termina con un caso integrador evaluado por SAG.')}
+    <ul class="aw aw--rutas" data-stagger>${ACADEMY.routes.map(([t, cs, h, f]) => `<li class="rv"><b>${h} h</b><div><h3>${t}</h3><p>${f}.</p></div><span class="mono">Cursos ${cs}</span></li>`).join('')}</ul>
+    <div class="acad rv">
+      <div><p class="label"><b>Ciclo abierto</b></p><h3>${ACADEMY.webinar[0]}</h3><p>${ACADEMY.webinar[1]}</p></div>
+      <div>${ACADEMY_URL ? `<a class="ulink" href="${ACADEMY_URL}" target="_blank" rel="noopener">Ir a la plataforma de SAG Academy ${I.up}</a>` : P('enlace a la plataforma de SAG Academy')}
+        <p style="margin-top:22px">${btn('contacto.html', 'Consultar fechas y valores', 'btn--red', ' data-mag')}</p></div>
     </div>
   </div>
 </section>

@@ -5,7 +5,7 @@ Prototipo del nuevo sitio de SAG Assessment & Consulting S.A.S. ([www.sagconsult
 Hay dos propuestas de diseño para comparar:
 
 - **Propuesta A** (`sitio/` y tema de WordPress): toma la identidad del sitio actual (logo "sag", azul profundo y cian, marfil, tipografía Archivo, imágenes, video del inicio y fotos del equipo) y la extiende a un sitio de ocho páginas.
-- **Propuesta B · "Expediente"** (`propuesta-b/`): dirección editorial distinta, con tinta, marfil y un solo acento rojo (la "bandera roja" del fraude), tipografía serif de revista y mucha más animación. Tiene cinco páginas: Inicio, Experticia, Equipo, Resultados y Contacto. Más detalles abajo.
+- **Propuesta B · "Expediente"** (`propuesta-b/`): dirección editorial distinta, con tinta, marfil y un solo acento rojo (la "bandera roja" del fraude), tipografía serif de revista y mucha más animación. Tiene seis páginas: Inicio, Experticia, Equipo, Resultados, SAG Academy y Contacto. Más detalles abajo.
 
 > Este repositorio **no publica nada** en ningún dominio. El sitio actual no cambia hasta que se autorice la publicación.
 
@@ -54,7 +54,9 @@ cd wordpress && zip -r sag-theme.zip sag-theme
 
 ## Páginas
 
-Inicio · Auditoría forense · Analítica de datos forense · Dictámenes periciales · Otros servicios · Nosotros (equipo, valores y método) · Reconocimientos · Contacto
+Inicio · Auditoría forense · Analítica de datos forense · Dictámenes periciales · Otros servicios · SAG Academy · Nosotros (equipo, valores y método) · Reconocimientos · Contacto
+
+En el tema de WordPress, la página de SAG Academy se crea con el slug `sag-academy`.
 
 ## Marcadores pendientes
 
@@ -62,7 +64,7 @@ Los datos que faltan aparecen en el sitio resaltados en amarillo como `[PENDIENT
 
 | Página | Pendiente |
 |---|---|
-| Otros servicios (A) · Experticia (B) | Enlace a SAG Academy (`ACADEMY_URL` en `src/content.js`) |
+| SAG Academy (A y B) | Enlace a la plataforma de cursos (`ACADEMY_URL` en `src/content.js`) |
 | Contacto | Dirección física, si se quiere publicar (`ADDRESS` en `src/content.js`) |
 | Contacto | Conectar el formulario a un servicio de envío. Hoy abre el correo del visitante con la consulta redactada |
 | Resultados (B) | Tres casos anonimizados: título, sector y un resultado verificable y autorizado para publicar |
@@ -71,7 +73,8 @@ Resueltos con datos y recursos de [www.sagconsulting.co](https://www.sagconsulti
 
 Decisiones de contenido a tener presentes:
 
-- **Alexandra Rodríguez y Yulieth Monroy** aparecen en una tarjeta compacta (foto, nombre y cargo), igual que en el sitio actual, que no publica sus perfiles. Si se quiere un perfil, se pasan de `SENIORS` a `TEAM` (con su `bio`) en `src/content.js`.
+- **Perfiles de Alexandra Rodríguez y Yulieth Monroy:** tomados de las hojas de vida que entregó SAG (noviembre de 2026), pasados a tercera persona y sin agregar datos. No tienen enlace a LinkedIn, así que la ventana de perfil no muestra ese botón.
+- **Perfiles de Diego Alarcón, Andrea Sierra y Yamid Suárez:** se ampliaron a pedido de SAG con su participación en asignaciones periciales, analítica de datos y automatización, según su perfil y las líneas de la firma. Conviene que cada persona los confirme.
 - **Etiquetas de los servicios:** se recuperaron las del sitio actual (en la versión anterior habían quedado vacías por un error de extracción); ahora aparecen también en la propuesta A.
 - **Cita del socio fundador:** se retiró del inicio porque no estaba validada; el sitio actual no la incluye.
 - **Trayectoria de Simón:** se usa "más de 30 años", como en el sitio actual (el prototipo anterior decía 25).
@@ -88,6 +91,12 @@ El concepto es un expediente que se arma mientras se recorre la página: del dat
 - **Mapa:** Colombia como sede; Ecuador, México y Perú según el perfil de la CEO ("procesos liderados" en esos países).
 - **Movimiento:** con "reducir movimiento" o sin JavaScript se muestra todo el contenido, sin animaciones. Cursor propio solo con mouse.
 - **Tema de WordPress:** por ahora solo existe para la propuesta A. Si se elige la B, se puede generar igual.
+
+## SAG Academy
+
+- **Catálogo:** 21 cursos cortos en seis líneas (auditoría forense; analítica de datos e IA; forense digital y fuentes abiertas; peritaje; cumplimiento y sector público; programas ejecutivos), en modalidad sincrónica, asincrónica o mixta, más cinco rutas de certificación y un webinar mensual abierto. Se edita en `ACADEMY`, dentro de `src/content.js`.
+- **Certificación:** son cursos de educación informal (menos de 160 horas, sin título académico); al aprobarlos, SAG expide un certificado. Las condiciones publicadas (80 % en la evaluación, 80 % de asistencia y caso integrador en las rutas) son una propuesta que SAG puede ajustar. Conviene confirmar el encuadre legal con su asesor.
+- **No se publican** docentes, fechas ni valores: la página invita a consultarlos por contacto.
 
 ## Revisar antes de publicar
 

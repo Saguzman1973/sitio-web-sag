@@ -11,7 +11,8 @@
         <li><a href="<?php echo esc_url( home_url( '/auditoria-forense/' ) ); ?>">Auditoría forense</a></li>
         <li><a href="<?php echo esc_url( home_url( '/analitica-de-datos/' ) ); ?>">Analítica de datos forense</a></li>
         <li><a href="<?php echo esc_url( home_url( '/dictamenes-periciales/' ) ); ?>">Dictámenes periciales</a></li>
-        <li><a href="<?php echo esc_url( home_url( '/otros-servicios/' ) ); ?>">Otros servicios</a></li></ul></div>
+        <li><a href="<?php echo esc_url( home_url( '/otros-servicios/' ) ); ?>">Otros servicios</a></li>
+        <li><a href="<?php echo esc_url( home_url( '/sag-academy/' ) ); ?>">SAG Academy</a></li></ul></div>
       <div><h2 class="foot__h">Firma</h2><ul>
         <li><a href="<?php echo esc_url( home_url( '/nosotros/' ) ); ?>">Nosotros y equipo</a></li>
         <li><a href="<?php echo esc_url( home_url( '/reconocimientos/' ) ); ?>">Reconocimientos</a></li>

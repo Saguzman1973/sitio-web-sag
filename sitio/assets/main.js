@@ -238,7 +238,7 @@
       $$("p", full).forEach(function (p) { var n = document.createElement("p"); n.textContent = p.textContent; bio.appendChild(n); });
       var tags = $("#prof-tags"); tags.innerHTML = "";
       $$(".mem__tags em", btn).forEach(function (t) { var n = document.createElement("li"); n.textContent = t.textContent; tags.appendChild(n); });
-      $("#prof-link").href = full.getAttribute("data-link");
+      var lk = full.getAttribute("data-link") || "", pl = $("#prof-link"); pl.href = lk || "#"; pl.hidden = !lk;
       last = btn; dlg.showModal(); document.body.style.overflow = "hidden";
     }
     $$("[data-open]").forEach(function (b) { b.addEventListener("click", function () { open(b); }); });

@@ -650,3 +650,13 @@ em { font-style: italic; }
   .vals > div, .vals > div + div { padding-left: 0; border-left: 0; }
   .vals > div + div { border-top: 1px solid var(--line-d); margin-top: 18px; }
 }
+
+/* ---------- SAG Academy ---------- */
+.vals--3 { grid-template-columns: repeat(3, 1fr); }
+.aw--rutas li { grid-template-columns: 110px minmax(0, 1fr) auto; }
+.aw p { margin-top: 6px; color: var(--mute); font-size: .95rem; }
+.acad { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 32px clamp(32px, 5vw, 96px); align-items: end; margin-top: clamp(56px, 7vw, 100px); padding-top: 32px; border-top: 1px solid var(--line); }
+.acad h3 { margin-top: 18px; font: 400 clamp(2rem, 3.4vw, 3.2rem)/1 var(--serif); letter-spacing: -.02em; }
+.acad p:not(.label) { margin-top: 12px; max-width: 54ch; color: var(--mute); }
+@media (max-width: 960px) { .acad { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .aw--rutas li { grid-template-columns: 76px 1fr; } .aw--rutas span { grid-column: 2; text-align: left; } }
