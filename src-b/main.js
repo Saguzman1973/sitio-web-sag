@@ -373,16 +373,18 @@
   });
 
   /* ---------- Formulario de contacto ----------
-     Si el formulario declara data-endpoint, envía allí los datos (JSON). Si no, abre el correo del visitante con la
-     consulta ya redactada y la constancia de la autorización incluida en el texto. */
+     Con data-endpoint (versión de producción: api/contact.php, el servicio del sitio actual) envía los datos en JSON;
+     el servidor guarda la prueba de la autorización, entrega la consulta por correo y responde { ok, ref }.
+     Sin data-endpoint, o si ese servicio no existe (404, 405, 501) o no hay conexión, abre el correo del visitante con
+     la consulta ya redactada y la constancia de la autorización incluida en el texto. */
   (function form() {
     var f = $('#form'); if (!f) return;
-    var note = $('#form-note'), submit = $('button[type=submit]', f), endpoint = f.getAttribute('data-endpoint');
+    var note = $('#form-note'), submit = $('button[type=submit]', f), endpoint = f.getAttribute('data-endpoint'), LEGAL = f.getAttribute('data-legal') || '1.0';
     function setErr(field, msg) { var w = field.closest('.fld'), p = w && $('.err', w); if (w) w.classList.toggle('bad', !!msg); if (p) { p.textContent = msg || ''; p.hidden = !msg; } }
     function chkErr(id, ok, msg) { var e = $(id); e.hidden = ok; e.textContent = ok ? '' : msg; return ok; }
     function mailto(d) {
       var body = 'Servicio: ' + d.servicio + '\nNombre: ' + d.nombre + '\nOrganización: ' + (d.organizacion || '-') + '\nCorreo: ' + d.correo + '\nTeléfono: ' + (d.telefono || '-') + '\n\n' + d.necesidad +
-        '\n\n--\nAcepto los Términos y Condiciones y la Política de Privacidad, y autorizo el tratamiento de mis datos para responder esta consulta. Aceptado en el formulario web el ' + new Date().toISOString() + '.';
+        '\n\n--\nAcepto los Términos y Condiciones (v' + LEGAL + ') y la Política de Privacidad (v' + LEGAL + '), y autorizo el tratamiento de mis datos para responder esta consulta. Aceptado en el formulario web el ' + new Date().toISOString() + '.';
       window.location.href = 'mailto:comercial@sagconsulting.co?subject=' + encodeURIComponent('Consulta web · ' + d.servicio) + '&body=' + encodeURIComponent(body);
       note.textContent = 'Abrimos su programa de correo con la consulta lista para enviar. Si no se abrió, escríbanos a comercial@sagconsulting.co.';
     }
@@ -396,12 +398,21 @@
       if (!chkErr('#err-terms', t.checked, 'Debe aceptar los Términos y Condiciones.')) bad = true;
       if (!chkErr('#err-priv', pr.checked, 'Debe autorizar el tratamiento de sus datos según la Política de Privacidad.')) bad = true;
       if (bad) { note.textContent = 'Revise los campos marcados.'; var first = $('.bad input, .bad textarea', f) || (!t.checked ? t : pr); if (first) first.focus(); return; }
-      if (f.website && f.website.value) return;
-      var d = { servicio: (f.querySelector('input[name="servicio"]:checked') || {}).value || 'Otro asunto', nombre: nombre.value.trim(), correo: correo.value.trim(), organizacion: f.organizacion.value.trim(), telefono: f.telefono.value.trim(), necesidad: msg.value.trim(), terms: true, privacy: true };
+      // Mismos campos que envía el sitio actual; "website" es la trampa para robots y la evalúa el servidor.
+      var d = { servicio: (f.querySelector('input[name="servicio"]:checked') || {}).value || 'Otro asunto', nombre: nombre.value.trim(), correo: correo.value.trim(), organizacion: f.organizacion.value.trim(), telefono: f.telefono.value.trim(), necesidad: msg.value.trim(), terms: true, privacy: true, website: (f.website || {}).value || '' };
       if (!endpoint) { mailto(d); return; }
       submit.disabled = true; note.textContent = 'Enviando…';
-      fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) })
-        .then(function (r) { if (!r.ok) throw new Error(); note.textContent = 'Gracias, recibimos su consulta. Le responderemos pronto.'; f.reset(); })
+      fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'same-origin', body: JSON.stringify(d) })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { s: r.status, j: j || {} }; }); })
+        .then(function (res) {
+          if (res.j.ok) {
+            note.textContent = 'Gracias, recibimos su consulta' + (res.j.ref ? '. Referencia: ' + res.j.ref : '') + '. Le responderemos pronto.';
+            f.reset(); $$('.fld.bad', f).forEach(function (w) { w.classList.remove('bad'); });
+          } else if (res.s === 404 || res.s === 405 || res.s === 501) mailto(d);
+          else if (res.s === 429) note.textContent = 'Ha enviado varias consultas seguidas. Inténtelo de nuevo más tarde o escríbanos a comercial@sagconsulting.co.';
+          else if (res.s === 400) note.textContent = 'Revise los datos e inténtelo de nuevo.';
+          else note.textContent = 'No pudimos enviar su consulta en este momento. Escríbanos a comercial@sagconsulting.co o por WhatsApp.';
+        })
         .catch(function () { mailto(d); })
         .then(function () { submit.disabled = false; });
     });

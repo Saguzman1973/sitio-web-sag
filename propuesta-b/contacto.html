@@ -5,9 +5,10 @@
 <title>Contacto | SAG Assessment & Consulting</title><meta name="description" content="Consulte un caso de forma confidencial.">
 <meta name="theme-color" content="#0b0e13">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=755571b717">
 <script>(function(){var d=document.documentElement;d.classList.add("js");try{var r=window.matchMedia("(prefers-reduced-motion: reduce)").matches,c=navigator.connection||{};if(!r&&!c.saveData){d.classList.add("anim");}}catch(e){}})();</script>
 </head>
 <body id="top">
@@ -50,7 +51,7 @@
       <p style="margin-top:12px"><span class="pending">[PENDIENTE: dirección física, si se quiere publicar]</span></p>
       <p class="soc rv"><a class="ulink" href="https://www.linkedin.com/company/sag-assesment-consulting-sas/" target="_blank" rel="noopener">LinkedIn <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="ulink" href="https://www.instagram.com/sag.consulting/" target="_blank" rel="noopener">Instagram <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></p>
     </div>
-    <form class="form rv" id="form" novalidate>
+    <form class="form rv" id="form" novalidate data-legal="1.0">
       <fieldset class="form__srv">
         <legend>¿Sobre qué servicio nos escribe?</legend>
         <label class="pill"><input type="radio" name="servicio" value="Auditoría forense" checked><span>Auditoría forense</span></label>
@@ -77,7 +78,7 @@
       <p class="aviso">Responsable: SAG Assessment &amp; Consulting S.A.S. (NIT 900.951.905-5). Usamos su nombre, correo y consulta solo para responderle; teléfono y organización son opcionales. Puede conocer, actualizar, rectificar o suprimir sus datos y revocar su autorización escribiendo a comercial@sagconsulting.co. Más información en la <a href="https://www.sagconsulting.co/privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a>. No incluya datos sensibles ni confidenciales.</p>
       <button class="btn btn--red" type="submit">Enviar consulta<i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></button>
       <p class="form__note" id="form-note" role="status" aria-live="polite"></p>
-      <p><span class="pending">[PENDIENTE: conectar el formulario a un servicio de envío; hoy abre el correo del visitante con la consulta redactada]</span></p>
+      <p><span class="pending">[PENDIENTE: conectar el formulario a un servicio de envío; hoy abre el correo del visitante con la consulta redactada. La versión de producción (node build-b.js --produccion) ya lo envía a api/contact.php, el mismo servicio del sitio actual]</span></p>
     </form>
   </div>
 </section></main>
@@ -110,6 +111,6 @@
   </div>
 </footer>
 <div class="cur" aria-hidden="true"><div class="cur__ring"><span></span></div><div class="cur__dot"></div></div>
-<script src="assets/main.js" defer></script>
+<script src="assets/main.js?v=e138c7432e" defer></script>
 </body>
 </html>

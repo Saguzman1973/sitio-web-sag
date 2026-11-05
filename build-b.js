@@ -1,10 +1,20 @@
-// Genera la PROPUESTA B "Expediente" (propuesta-b/) desde src-b/ y el contenido compartido de src/content.js.
-// Imágenes, fotos del equipo y video: src/assets/. Fuentes: src-b/fonts/. Mapa: src-b/mapa-latam.json.
-const fs = require('fs'), path = require('path');
+// Genera la PROPUESTA B "Expediente" desde src-b/ y el contenido compartido de src/content.js.
+// Imágenes, fotos del equipo y video: src/assets/. Fuentes, imagen para compartir e ícono: src-b/. Mapa: src-b/mapa-latam.json.
+//   node build-b.js               → propuesta-b/  vista previa, con los datos que faltan marcados [PENDIENTE]
+//   node build-b.js --produccion  → publicar/     versión para subir a www.sagconsulting.co: sin marcadores ni casos,
+//                                  sin enlaces que hoy devuelven 404, con el formulario conectado a api/contact.php,
+//                                  metadatos para buscadores y redes, sitemap.xml, robots.txt y página 404.
+const fs = require('fs'), path = require('path'), crypto = require('crypto');
 const { SVC, AREAS, SECTORES, POSTS, TEAM, SENIORS, STEPS, ACADEMY_URL, ADDRESS, ACADEMY } = require('./src/content.js');
-const OUT = path.join(__dirname, 'propuesta-b');
+const PROD = process.argv.includes('--produccion');
+const OUT = path.join(__dirname, PROD ? 'publicar' : 'propuesta-b');
 const SRC = path.join(__dirname, 'src-b');
-const P = (t) => `<span class="pending">[PENDIENTE: ${t}]</span>`;
+const SITE = 'https://www.sagconsulting.co/';
+// Los artículos del blog y el Código de ética devuelven hoy 404 en www.sagconsulting.co, así que la versión de producción
+// no los enlaza. Cuando vuelvan a publicarse con las mismas direcciones, cambie BLOG_PUBLICADO a true y regenere.
+const BLOG_PUBLICADO = false;
+const VER_BLOG = !PROD || BLOG_PUBLICADO;
+const P = (t) => (PROD ? '' : `<span class="pending">[PENDIENTE: ${t}]</span>`);
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const pad = (n) => String(n).padStart(2, '0');
 const A = (p) => `assets/${p}`;
@@ -64,8 +74,8 @@ const footer = () => `
         <li>Bogotá, Colombia</li></ul></div>
       <div><h2>Firma</h2><ul>
         <li><a href="${C.li}" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="${C.ig}" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="${C.legal.e}" target="_blank" rel="noopener">Código de ética</a></li></ul></div>
+        <li><a href="${C.ig}" target="_blank" rel="noopener">Instagram</a></li>${VER_BLOG ? `
+        <li><a href="${C.legal.e}" target="_blank" rel="noopener">Código de ética</a></li>` : ''}</ul></div>
     </div>
     <div class="foot__markbox" aria-hidden="true"><img class="foot__mark" src="${A('img/logo-sag-blanco.svg')}" alt="" width="1420" height="784" loading="lazy"></div>
   </div>
@@ -413,10 +423,10 @@ ${marquee(AREAS, true, 'r')}
 ${methodBlock('§ 03')}
 <section class="sec" id="publicaciones">
   <div class="wrap">
-    ${shead('§ 04', 'Conocimiento', ['Ideas y análisis de', '<em>nuestros especialistas.</em>'], 'Artículos sobre fraude, auditoría forense, analítica, peritaje y cumplimiento, escritos por el equipo de SAG.')}
+    ${shead('§ 04', 'Conocimiento', ['Ideas y análisis de', '<em>nuestros especialistas.</em>'], VER_BLOG ? 'Artículos sobre fraude, auditoría forense, analítica, peritaje y cumplimiento, escritos por el equipo de SAG.' : 'Para conocer las publicaciones de SAG y de su socio fundador sobre fraude, auditoría forense, analítica, peritaje y cumplimiento, síganos en LinkedIn.')}${VER_BLOG ? `
     <div class="pubs" data-stagger>${POSTS.slice(0, 8).map((p) => `
       <a class="rv" href="${p.u}" target="_blank" rel="noopener" data-cursor="Leer"><time datetime="${p.dt}">${p.d}</time><h3>${esc(p.t)}</h3><span>${esc(p.cat)}</span>${I.up}</a>`).join('')}
-    </div>
+    </div>` : ''}
     <p class="rv" style="margin-top:40px;display:flex;flex-wrap:wrap;gap:12px">${btn(C.li, 'LinkedIn de SAG', '', ' target="_blank" rel="noopener"')}${btn(C.liSimon, 'Simón Guzmán en LinkedIn', 'btn--line', ' target="_blank" rel="noopener"')}</p>
   </div>
 </section>
@@ -451,17 +461,18 @@ ${dialog}
       <div class="rv"><span class="mono">03</span><h3>Imparcialidad</h3><p>Seguimos la evidencia, no la conclusión que se espera.</p></div>
       <div class="rv"><span class="mono">04</span><h3>Transparencia</h3><p>Métodos explícitos y resultados reproducibles.</p></div>
     </div>
-    <p class="rv" style="margin-top:44px"><a class="ulink" href="${C.legal.e}" target="_blank" rel="noopener">Conozca nuestro Código de ética y conducta ${I.up}</a></p>
+    ${VER_BLOG ? `<p class="rv" style="margin-top:44px"><a class="ulink" href="${C.legal.e}" target="_blank" rel="noopener">Conozca nuestro Código de ética y conducta ${I.up}</a></p>` : ''}
   </div>
 </section>
 ${cta()}` };
 
-pages.resultados = { title: 'Resultados | SAG Assessment & Consulting', desc: 'Cifras, reconocimientos, cobertura y casos de SAG Assessment & Consulting.', body: () => `
-${phead({ crumb: 'Resultados', h1: ['Cifras,', '<em>reconocimientos y casos.</em>'], lead: 'Lo que la firma ha hecho desde 2019, cómo lo reconoce el mercado y dónde ha trabajado.' })}
+// La sección de casos solo existe en la vista previa: en producción no se publica hasta tener casos reales autorizados.
+pages.resultados = { title: 'Resultados | SAG Assessment & Consulting', desc: PROD ? 'Cifras, reconocimientos y cobertura de SAG Assessment & Consulting.' : 'Cifras, reconocimientos, cobertura y casos de SAG Assessment & Consulting.', body: () => `
+${phead({ crumb: 'Resultados', h1: PROD ? ['Cifras,', '<em>reconocimientos y cobertura.</em>'] : ['Cifras,', '<em>reconocimientos y casos.</em>'], lead: 'Lo que la firma ha hecho desde 2019, cómo lo reconoce el mercado y dónde ha trabajado.' })}
 ${statsBlock('§ 01')}
 ${recBlock('§ 02')}
 ${coverBlock('§ 03')}
-<section class="sec sec--paper2" id="casos">
+${PROD ? '' : `<section class="sec sec--paper2" id="casos">
   <div class="wrap">
     ${shead('§ 04', 'Casos', ['Casos', '<em>anonimizados.</em>'], 'Los casos se presentan sin nombres ni datos que permitan identificar a los clientes.')}
     <div class="cases" data-stagger>${['Auditoría forense', 'Analítica de datos forense', 'Dictámenes periciales'].map((l, i) => `
@@ -477,7 +488,7 @@ ${coverBlock('§ 03')}
       </article>`).join('')}
     </div>
   </div>
-</section>
+</section>`}
 ${cta()}` };
 
 pages.academy = { title: 'SAG Academy | SAG Assessment & Consulting', desc: 'Cursos cortos de auditoría forense, analítica de datos, forense digital, peritaje y cumplimiento, sincrónicos y asincrónicos, con certificado SAG (educación informal).', body: () => `
@@ -515,7 +526,7 @@ ${phead({ crumb: 'SAG Academy', h1: ['Cursos cortos', '<em>con certificado SAG.<
     <div class="acad rv">
       <div><p class="label"><b>Ciclo abierto</b></p><h3>${ACADEMY.webinar[0]}</h3><p>${ACADEMY.webinar[1]}</p></div>
       <div>${ACADEMY_URL ? `<a class="ulink" href="${ACADEMY_URL}" target="_blank" rel="noopener">Ir a la plataforma de SAG Academy ${I.up}</a>` : P('enlace a la plataforma de SAG Academy')}
-        <p style="margin-top:22px">${btn('contacto.html', 'Consultar fechas y valores', 'btn--red', ' data-mag')}</p></div>
+        <p${ACADEMY_URL || !PROD ? ' style="margin-top:22px"' : ''}>${btn('contacto.html', 'Consultar fechas y valores', 'btn--red', ' data-mag')}</p></div>
     </div>
   </div>
 </section>
@@ -533,10 +544,10 @@ ${phead({ crumb: 'Contacto', h1: ['Cuéntenos', '<em>qué necesita resolver.</em
         <li><span class="mono">WhatsApp</span><a href="https://wa.me/${C.waRaw}" target="_blank" rel="noopener">${C.wa}</a></li>
         <li><span class="mono">Oficina</span><b>Bogotá, Colombia${ADDRESS ? `<br>${ADDRESS}` : ''}</b></li>
       </ul>
-      ${ADDRESS ? '' : `<p style="margin-top:12px">${P('dirección física, si se quiere publicar')}</p>`}
+      ${ADDRESS || PROD ? '' : `<p style="margin-top:12px">${P('dirección física, si se quiere publicar')}</p>`}
       <p class="soc rv"><a class="ulink" href="${C.li}" target="_blank" rel="noopener">LinkedIn ${I.up}</a><a class="ulink" href="${C.ig}" target="_blank" rel="noopener">Instagram ${I.up}</a></p>
     </div>
-    <form class="form rv" id="form" novalidate>
+    <form class="form rv" id="form" novalidate data-legal="1.0"${PROD ? ' data-endpoint="api/contact.php"' : ''}>
       <fieldset class="form__srv">
         <legend>¿Sobre qué servicio nos escribe?</legend>
         ${['Auditoría forense', 'Laboratorio forense digital', 'Analítica y gobernanza de datos', 'Dictámenes periciales', 'SAG Academy', 'Otro asunto'].map((s, i) => `<label class="pill"><input type="radio" name="servicio" value="${s}"${i ? '' : ' checked'}><span>${s}</span></label>`).join('\n        ')}
@@ -557,8 +568,8 @@ ${phead({ crumb: 'Contacto', h1: ['Cuéntenos', '<em>qué necesita resolver.</em
       <p class="err err--chk" id="err-priv" hidden></p>
       <p class="aviso">Responsable: SAG Assessment &amp; Consulting S.A.S. (NIT 900.951.905-5). Usamos su nombre, correo y consulta solo para responderle; teléfono y organización son opcionales. Puede conocer, actualizar, rectificar o suprimir sus datos y revocar su autorización escribiendo a ${C.email}. Más información en la <a href="${C.legal.p}" target="_blank" rel="noopener">Política de Privacidad</a>. No incluya datos sensibles ni confidenciales.</p>
       <button class="btn btn--red" type="submit">Enviar consulta<i>${I.arr}</i></button>
-      <p class="form__note" id="form-note" role="status" aria-live="polite"></p>
-      <p>${P('conectar el formulario a un servicio de envío; hoy abre el correo del visitante con la consulta redactada')}</p>
+      <p class="form__note" id="form-note" role="status" aria-live="polite"></p>${PROD ? '' : `
+      <p>${P('conectar el formulario a un servicio de envío; hoy abre el correo del visitante con la consulta redactada. La versión de producción (node build-b.js --produccion) ya lo envía a api/contact.php, el mismo servicio del sitio actual')}</p>`}
     </form>
   </div>
 </section>` };
@@ -573,33 +584,89 @@ const loader = `
   <p class="loader__meta mono">Abriendo expediente</p>
 </div></div>`;
 
-fs.rmSync(OUT, { recursive: true, force: true });
-fs.mkdirSync(path.join(OUT, 'assets'), { recursive: true });
-for (const d of ['img', 'video']) fs.cpSync(path.join(__dirname, 'src/assets', d), path.join(OUT, 'assets', d), { recursive: true });
-fs.cpSync(path.join(SRC, 'fonts'), path.join(OUT, 'assets/fonts'), { recursive: true });
-fs.copyFileSync(path.join(SRC, 'styles.css'), path.join(OUT, 'assets/styles.css'));
-fs.copyFileSync(path.join(SRC, 'main.js'), path.join(OUT, 'assets/main.js'));
-for (const [slugName, p] of Object.entries(pages)) {
-  const html = `<!DOCTYPE html>
+// Versión de la hoja de estilos y del script en la URL (?v=...): cambia sola cuando cambia el archivo, así ningún
+// navegador ni caché del servidor sigue usando una copia vieja después de una actualización.
+const ver = (f) => crypto.createHash('sha256').update(fs.readFileSync(path.join(SRC, f))).digest('hex').slice(0, 10);
+const V = { css: ver('styles.css'), js: ver('main.js') };
+const url = (s) => SITE + (s === 'index' ? '' : `${s}.html`);
+const OG = { img: SITE + 'assets/img/og-sag.jpg', alt: 'SAG Assessment & Consulting. Del dato al hecho. Del hecho al dictamen.' };
+const LD = {
+  '@context': 'https://schema.org', '@type': 'Organization',
+  name: 'SAG Assessment & Consulting', legalName: 'SAG Assessment & Consulting S.A.S.', taxID: '900.951.905-5',
+  url: SITE, logo: SITE + 'assets/img/apple-touch-icon.png', image: OG.img, description: pages.index.desc,
+  email: C.email, telephone: C.tel, address: { '@type': 'PostalAddress', addressLocality: 'Bogotá', addressCountry: 'CO' },
+  founder: { '@type': 'Person', name: SIMON.n, sameAs: C.liSimon },
+  knowsAbout: ['Auditoría forense', 'Analítica de datos forense', 'Dictámenes periciales', 'Laboratorio forense digital', 'Gobernanza de datos'],
+  sameAs: [C.li, C.ig],
+};
+// Metadatos para buscadores y para la vista previa al compartir en LinkedIn, WhatsApp, etc. (solo en producción).
+const meta = (s, p) => (PROD ? `
+<link rel="canonical" href="${url(s)}">
+<meta property="og:type" content="website"><meta property="og:site_name" content="SAG Assessment &amp; Consulting"><meta property="og:locale" content="es_CO">
+<meta property="og:title" content="${esc(p.title)}"><meta property="og:description" content="${esc(p.desc)}"><meta property="og:url" content="${url(s)}">
+<meta property="og:image" content="${OG.img}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${esc(OG.alt)}">
+<meta name="twitter:card" content="summary_large_image">${s === 'index' ? `
+<script type="application/ld+json">${JSON.stringify(LD).replace(/</g, '\\u003c')}</script>` : ''}` : '');
+
+const page = (s, p) => `<!DOCTYPE html>
 <html lang="es-CO">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${p.title}</title><meta name="description" content="${p.desc}">
+<title>${p.title}</title><meta name="description" content="${p.desc}">${p.noindex ? `
+<meta name="robots" content="noindex">` : meta(s, p)}
 <meta name="theme-color" content="#0b0e13">
 <link rel="icon" href="${A('img/favicon.svg')}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="${A('img/apple-touch-icon.png')}">
 <link rel="preload" href="${A('fonts/instrument-serif-latin-400-normal.woff2')}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${A('fonts/geist-latin-wght-normal.woff2')}" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${A('styles.css')}">
+<link rel="stylesheet" href="${A('styles.css')}?v=${V.css}">
 ${head(p.intro)}
 </head>
 <body id="top">
 ${p.intro ? loader : ''}
-${header(slugName)}
+${header(s)}
 <main id="contenido">${p.body()}</main>
 ${footer()}
-<script src="${A('main.js')}" defer></script>
+<script src="${A('main.js')}?v=${V.js}" defer></script>
 </body>
 </html>`;
-  fs.writeFileSync(path.join(OUT, `${slugName}.html`), html);
+
+// Página 404 (solo producción). El servidor la muestra en cualquier dirección inexistente, por ejemplo /nosotros/,
+// así que sus enlaces y recursos van desde la raíz del dominio (/assets/..., /index.html).
+const notFound = { title: 'Página no encontrada | SAG Assessment & Consulting', desc: 'La página que busca no existe o cambió de dirección.', noindex: true, body: () => `
+${phead({ crumb: 'Página no encontrada', h1: ['Esta página no está', '<em>en el expediente.</em>'], lead: 'Es posible que la dirección haya cambiado con el nuevo sitio. Estas son las secciones principales.' })}
+<section class="sec" style="padding-top:clamp(40px, 5vw, 72px)">
+  <div class="wrap">
+    <ul class="ch">${[['index', 'Inicio', '00'], ...NAV].map(([s, t, n]) => `<li><span class="mono">${n}</span><a href="${s}.html">${t}</a></li>`).join('')}</ul>
+    <p style="margin-top:40px">${btn('index.html', 'Volver al inicio', 'btn--red')}</p>
+  </div>
+</section>` };
+const rootify = (html) => html.replace(/\b(href|src|data-src|data-img)="(?![a-z][a-z0-9+.-]*:|#|\/)/g, '$1="/');
+
+fs.rmSync(OUT, { recursive: true, force: true });
+fs.mkdirSync(path.join(OUT, 'assets'), { recursive: true });
+for (const d of ['img', 'video']) fs.cpSync(path.join(__dirname, 'src/assets', d), path.join(OUT, 'assets', d), { recursive: true });
+for (const f of ['og-sag.jpg', 'apple-touch-icon.png']) fs.copyFileSync(path.join(SRC, f), path.join(OUT, 'assets/img', f));
+fs.cpSync(path.join(SRC, 'fonts'), path.join(OUT, 'assets/fonts'), { recursive: true });
+fs.copyFileSync(path.join(SRC, 'styles.css'), path.join(OUT, 'assets/styles.css'));
+fs.copyFileSync(path.join(SRC, 'main.js'), path.join(OUT, 'assets/main.js'));
+for (const [s, p] of Object.entries(pages)) fs.writeFileSync(path.join(OUT, `${s}.html`), page(s, p));
+
+if (PROD) {
+  const today = new Date().toISOString().slice(0, 10);
+  fs.writeFileSync(path.join(OUT, '404.html'), rootify(page('404', notFound)));
+  fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${Object.keys(pages).map((s) => `  <url><loc>${url(s)}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
+${['terminos', 'privacidad', 'cookies'].map((s) => `  <url><loc>${SITE}${s}.html</loc></url>`).join('\n')}
+</urlset>
+`);
+  fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nDisallow: /api/\n\nSitemap: ${SITE}sitemap.xml\n`);
+  // Control final: nada pendiente ni enlaces que hoy no responden en lo que se va a publicar.
+  for (const f of fs.readdirSync(OUT).filter((x) => x.endsWith('.html'))) {
+    const h = fs.readFileSync(path.join(OUT, f), 'utf8');
+    if (/PENDIENTE|class="pending"/.test(h)) throw new Error(`Quedó un marcador [PENDIENTE] en publicar/${f}`);
+    if (!VER_BLOG && /codigo-de-etica|sagconsulting\.co\/20\d\d\//.test(h)) throw new Error(`Quedó un enlace del blog o del Código de ética en publicar/${f}`);
+  }
 }
-console.log('OK propuesta B:', Object.keys(pages).length, 'páginas');
+console.log(`OK propuesta B${PROD ? ' (producción, carpeta publicar/)' : ''}:`, Object.keys(pages).length + (PROD ? 1 : 0), 'páginas');

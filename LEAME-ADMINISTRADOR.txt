@@ -1,0 +1,124 @@
+SAG ASSESSMENT & CONSULTING · NUEVO SITIO WEB (www.sagconsulting.co)
+Instrucciones para el administrador del sitio
+
+====================================================================
+QUÉ CONTIENE ESTE PAQUETE
+====================================================================
+
+ARCHIVOS-PARA-SUBIR/   El sitio completo, listo para publicar. Es un sitio estático
+                       (HTML, CSS y JavaScript): no necesita base de datos, WordPress
+                       ni instalar nada en el servidor.
+
+    index.html, experticia.html, equipo.html, resultados.html,
+    academy.html, contacto.html ........ las seis páginas del sitio
+    404.html ........................... página para direcciones que no existen (ver paso 5)
+    robots.txt, sitemap.xml ............ para los buscadores
+    assets/ ............................ estilos, script, fuentes, imágenes y video
+
+CONTENIDO-sha256.txt   Lista de archivos con su huella SHA-256, por si quiere
+                       comprobar que todo subió completo y sin cambios.
+
+====================================================================
+ANTES DE EMPEZAR
+====================================================================
+
+1. Haga una copia de respaldo del sitio actual. Descargue todo el contenido de la
+   carpeta raíz del sitio: es la que hoy contiene index.html, terminos.html,
+   privacidad.html, cookies.html y las carpetas css/, js/, api/ y assets/.
+   Con esa copia puede volver al sitio anterior en minutos.
+
+====================================================================
+CÓMO PUBLICAR
+====================================================================
+
+2. Suba el CONTENIDO de la carpeta ARCHIVOS-PARA-SUBIR (no la carpeta en sí) a esa
+   misma carpeta raíz, por FTP o SFTP, con el administrador de archivos del hosting
+   o con el método que use hoy. Acepte reemplazar index.html.
+
+   La carpeta assets/ se combina con la que ya existe en el servidor: se agregan los
+   estilos, el script y las fuentes nuevos. Las imágenes y el video que ya están en
+   el servidor son idénticos a los del paquete.
+
+3. NO borre nada de lo que ya está en el servidor. En particular, conserve:
+
+   - terminos.html, privacidad.html y cookies.html: el pie de página y el
+     formulario de contacto enlazan a estas tres páginas.
+   - css/, assets/img/logo-sag-blanco.svg y assets/img/favicon.svg: los usan
+     esas tres páginas.
+   - api/ (en especial api/contact.php): el formulario de contacto nuevo envía las
+     consultas a este mismo servicio, igual que el sitio actual.
+   - js/ puede quedarse: lo usaba la página anterior y no interfiere.
+
+4. Si el hosting o un servicio como Cloudflare guarda caché, púrguela para que se
+   vea la página nueva de inmediato.
+
+====================================================================
+OPCIONAL
+====================================================================
+
+5. Página 404 con el diseño nuevo. Para que las direcciones que ya no existen (por
+   ejemplo, las del blog anterior) muestren esta página en lugar del error genérico
+   del servidor, agregue esta línea al archivo .htaccess de la carpeta raíz:
+
+       ErrorDocument 404 /404.html
+
+   El servidor actual es Apache, que la admite. Solo sirve si el sitio está en la
+   raíz del dominio, como hoy.
+
+6. Si tienen Google Search Console, envíe el mapa del sitio:
+   https://www.sagconsulting.co/sitemap.xml
+
+====================================================================
+COMPROBACIÓN DESPUÉS DE PUBLICAR (unos 5 minutos)
+====================================================================
+
+[ ] Abra https://www.sagconsulting.co en un computador y en un celular, y recorra el
+    menú: Experticia, Equipo, Resultados, Academy y Contacto.
+[ ] En Equipo, toque a una persona: debe abrirse su perfil.
+[ ] En el pie de página, abra Términos y Condiciones, Política de Privacidad y
+    Política de Cookies: deben cargar.
+[ ] Envíe UNA consulta de prueba desde Contacto (por ejemplo, con la palabra PRUEBA
+    en el mensaje). Debe aparecer "Gracias, recibimos su consulta. Referencia: ..."
+    y el correo debe llegar a comercial@sagconsulting.co.
+    Si en vez de eso se abre el programa de correo del computador, el servidor no
+    encontró api/contact.php: revise el paso 3.
+
+====================================================================
+CÓMO VOLVER AL SITIO ANTERIOR
+====================================================================
+
+Suba de nuevo el index.html de la copia de respaldo del paso 1. Los demás archivos
+nuevos pueden quedarse o borrarse: no interfieren con el sitio anterior.
+
+====================================================================
+QUÉ CAMBIA FRENTE AL SITIO ACTUAL
+====================================================================
+
+- El asistente de chat del sitio actual (js/chat.js) no está en el diseño nuevo.
+- No se publican la lista de artículos ni el enlace al Código de ética, porque esas
+  direcciones hoy responden con error 404. Cuando el blog y el Código vuelvan a
+  estar en línea con las mismas direcciones, se regenera el sitio con esos enlaces.
+- Fuentes, imágenes y video van incluidos: el sitio no carga nada de servicios
+  externos. Tampoco tiene herramientas de analítica (el sitio actual no las tiene).
+- Se agregaron metadatos para que el enlace se vea con imagen y descripción al
+  compartirlo en LinkedIn o WhatsApp.
+
+Datos que siguen pendientes y no impiden publicar:
+- Enlace a la plataforma de SAG Academy. Mientras tanto, la página invita a
+  consultar fechas y valores por el formulario de contacto.
+- Casos anonimizados para la página de Resultados.
+- Dirección física, solo si se quiere publicar.
+
+====================================================================
+PARA FUTURAS ACTUALIZACIONES
+====================================================================
+
+El sitio se genera desde el repositorio Saguzman1973/sitio-web-sag (hoy en la rama
+claude/intelligent-babbage-2e0yho). Después de editar el contenido:
+
+    ./empaquetar.sh
+
+genera de nuevo la carpeta publicar/ y este mismo paquete. Para actualizar el sitio
+basta con volver a subir los archivos que cambiaron. Las páginas piden la hoja de
+estilos y el script con un número de versión que cambia cuando ellos cambian, así
+que los navegadores no se quedan con una copia vieja.

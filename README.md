@@ -9,6 +9,26 @@ Hay dos propuestas de diseño para comparar:
 
 > Este repositorio **no publica nada** en ningún dominio. El sitio actual no cambia hasta que se autorice la publicación.
 
+## Publicar la propuesta B
+
+`publicar/` es la versión de producción de la propuesta B, lista para subir a la carpeta raíz de www.sagconsulting.co. Para el administrador del sitio hay un paquete con instrucciones:
+
+```bash
+./empaquetar.sh
+```
+
+Genera `publicar/` y `SAG-sitio-nuevo-AAAA-MM-DD.zip` (no se guarda en git) con tres cosas: `ARCHIVOS-PARA-SUBIR/`, `LEAME-ADMINISTRADOR.txt` (copia de respaldo, qué subir, qué no borrar, prueba del formulario y cómo volver atrás) y `CONTENIDO-sha256.txt`.
+
+Diferencias con la vista previa (`propuesta-b/`):
+
+- **Sin marcadores `[PENDIENTE]`.** Se omiten la sección de casos de Resultados, el enlace a la plataforma de SAG Academy y la nota de dirección física mientras no haya datos. El build se detiene si queda algún marcador.
+- **Sin enlaces que hoy devuelven 404:** la lista de artículos y el Código de ética. Cuando vuelvan a publicarse con las mismas direcciones, cambie `BLOG_PUBLICADO` a `true` en `build-b.js` y regenere.
+- **Formulario conectado** a `api/contact.php`, el servicio que ya usa el sitio actual, con los mismos campos y respuestas: referencia al recibir la consulta, avisos ante datos inválidos (400) o demasiados envíos (429), y correo del visitante como respaldo si el servicio no existe (404, 405, 501) o no hay conexión.
+- **Para buscadores y redes:** dirección canónica, Open Graph con imagen para compartir (`src-b/og-sag.jpg`), datos estructurados de la organización, `sitemap.xml`, `robots.txt`, ícono para iPhone y una página `404.html`, que se activa con `ErrorDocument 404 /404.html` en el `.htaccess`.
+- **Caché:** las páginas piden `styles.css` y `main.js` con una versión (`?v=`) que cambia cuando cambia el archivo.
+
+La versión de producción no reemplaza nada del servidor salvo `index.html`: las páginas legales, `css/`, `js/` y `api/` se quedan como están. Las imágenes y el video del paquete son idénticos a los que ya están en `assets/` del servidor.
+
 ## Cómo ver el sitio localmente
 
 **Opción 1. Sin instalar nada:** descargue el repositorio (botón verde *Code* > *Download ZIP*), descomprímalo y abra `sitio/index.html` (propuesta A) o `propuesta-b/index.html` (propuesta B) con doble clic.
@@ -27,12 +47,14 @@ python3 -m http.server 8000
 |---|---|
 | `sitio/` | Propuesta A: sitio estático generado (HTML + CSS + JS, sin frameworks ni recursos externos) |
 | `wordpress/sag-theme/` | Propuesta A como tema de WordPress (instrucciones en su `README.txt`) |
-| `propuesta-b/` | Propuesta B: sitio estático generado (sin frameworks ni recursos externos) |
+| `propuesta-b/` | Propuesta B: vista previa generada, con los datos que faltan marcados (sin frameworks ni recursos externos) |
+| `publicar/` | Propuesta B en versión de producción, para subir a www.sagconsulting.co |
+| `LEAME-ADMINISTRADOR.txt`, `empaquetar.sh` | Instrucciones de publicación y script que arma el ZIP para el administrador |
 | `src/content.js` | Contenido compartido por ambas propuestas: servicios, equipo, artículos, ventajas, método y los datos pendientes |
 | `src/styles.css`, `src/main.js` | Estilos y comportamiento de la propuesta A |
-| `src-b/` | Estilos, comportamiento, fuentes (Instrument Serif, Geist, Geist Mono) y puntos del mapa de la propuesta B |
+| `src-b/` | Estilos, comportamiento, fuentes (Instrument Serif, Geist, Geist Mono), puntos del mapa, imagen para compartir e ícono de la propuesta B |
 | `src/assets/` | Fuente Archivo, logo, imágenes, fotos del equipo y video (los usan ambas propuestas) |
-| `build.js` / `build-b.js` | Generan la propuesta A (`sitio/` y el tema) y la propuesta B (`propuesta-b/`) |
+| `build.js` / `build-b.js` | Generan la propuesta A (`sitio/` y el tema) y la propuesta B (`propuesta-b/`, y `publicar/` con `--produccion`) |
 
 Los textos de cada página están en `build.js` (A) y `build-b.js` (B). El contenido que comparten está en `src/content.js`. Después de editar, regenere:
 
@@ -42,6 +64,10 @@ node build.js
 
 ```bash
 node build-b.js
+```
+
+```bash
+node build-b.js --produccion
 ```
 
 Dos datos pendientes se completan en las primeras líneas de `src/content.js` y valen para ambas propuestas: `ACADEMY_URL` (enlace de SAG Academy) y `ADDRESS` (dirección física, solo si se quiere publicar).
@@ -66,7 +92,7 @@ Los datos que faltan aparecen en el sitio resaltados en amarillo como `[PENDIENT
 |---|---|
 | SAG Academy (A y B) | Enlace a la plataforma de cursos (`ACADEMY_URL` en `src/content.js`) |
 | Contacto | Dirección física, si se quiere publicar (`ADDRESS` en `src/content.js`) |
-| Contacto | Conectar el formulario a un servicio de envío. Hoy abre el correo del visitante con la consulta redactada |
+| Contacto | Conectar el formulario a un servicio de envío. En las vistas previas abre el correo del visitante con la consulta redactada; la versión de producción ya envía a `api/contact.php` |
 | Resultados (B) | Tres casos anonimizados: título, sector y un resultado verificable y autorizado para publicar |
 
 Resueltos con datos y recursos de [www.sagconsulting.co](https://www.sagconsulting.co): cifras (+600 casos, +150 clientes, +10 años), URLs de los artículos, fotografías de Simón y del equipo, logo y sellos de los reconocimientos (Leaders League *Ranked Firm 2025* y Wealth & Finance).
@@ -100,7 +126,7 @@ El concepto es un expediente que se arma mientras se recorre la página: del dat
 
 ## Revisar antes de publicar
 
-- **Enlaces que hoy devuelven 404 en www.sagconsulting.co:** los seis artículos de "Conocimiento" (por ejemplo `/2026/01/22/davos-2026-...`) y el Código de ética (`/nosotros/codigo-de-etica-y-conducta/`). Son los enlaces que usa el sitio actual, pero las rutas ya no responden. Funcionarán cuando el blog y esa página se restauren con los mismos enlaces permanentes.
+- **Enlaces que hoy devuelven 404 en www.sagconsulting.co:** los artículos de "Conocimiento" (por ejemplo `/2026/01/22/davos-2026-...`) y el Código de ética (`/nosotros/codigo-de-etica-y-conducta/`). Son los enlaces que usa el sitio actual, pero las rutas ya no responden. Las vistas previas los conservan; la versión de producción no los muestra hasta que `BLOG_PUBLICADO` sea `true`.
 - **Imágenes generadas con IA:** el inicio, la banda panorámica y la imagen de ventajas, además del video de fondo, fueron generados con inteligencia artificial. El pie de página lo indica y debe conservarse mientras se usen.
 - **Video del inicio** (`src/assets/video/hero-bg.mp4`, 1,7 MB): solo se carga en pantallas anchas, sin "reducir movimiento" y sin ahorro de datos. En móvil se ve la imagen fija.
 - **Páginas legales** (Términos, Privacidad, Cookies): el pie enlaza a las del sitio actual. Este prototipo no las incluye.
