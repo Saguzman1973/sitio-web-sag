@@ -91,6 +91,42 @@ const footer = () => `
 </footer>
 <div class="cur" aria-hidden="true"><div class="cur__ring"><span></span></div><div class="cur__dot"></div></div>`;
 
+// Asistente SAG (chat). Mismo funcionamiento y textos legales que el del sitio actual: usa api/chat.php y
+// api/consent.php del servidor; sin ellos (vista previa local) responde con respuestas preparadas. Ver src-b/chat.js.
+const chat = () => `
+<aside class="chat" id="chat" aria-label="Asistente de soporte" data-endpoint="api/chat.php" data-consent="api/consent.php" data-legal="1.0">
+  <p class="chat__tease" id="chat-tease" hidden>¿Dudas sobre nuestros servicios? <button type="button" id="chat-tease-go">Pregúntenos</button></p>
+  <section class="chat__panel" id="chat-panel" role="dialog" aria-label="Asistente virtual de SAG" hidden>
+    <header class="chat__head">
+      <span class="chat__av" aria-hidden="true"><img src="${A('img/logo-sag-blanco.svg')}" alt="" width="74" height="41"></span>
+      <div class="chat__ti"><b>Asistente SAG</b><span><i></i>Responde con IA</span></div>
+      <button type="button" class="chat__ib" id="chat-new" aria-label="Nueva conversación" title="Nueva conversación">${svg('<path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v4h4"/>')}</button>
+      <button type="button" class="chat__ib" id="chat-x" aria-label="Cerrar asistente">${svg('<path d="M6 6l12 12M18 6 6 18"/>')}</button>
+    </header>
+    <div class="chat__log" id="chat-log" role="log" aria-live="polite"></div>
+    <section class="chat__gate" id="chat-gate" hidden aria-labelledby="chat-gate-t">
+      <h2 id="chat-gate-t">Antes de empezar</h2>
+      <p>Este asistente usa <strong>inteligencia artificial de un tercero (Google)</strong>: lo que usted escriba se envía a ese proveedor para generar la respuesta. No escriba datos personales, de terceros ni detalles confidenciales de su caso.</p>
+      <label class="chk"><input type="checkbox" id="g-terms"><span id="lbl-chat-terms">He leído y acepto los <a href="${C.legal.t}" target="_blank" rel="noopener">Términos y Condiciones</a>.</span></label>
+      <label class="chk"><input type="checkbox" id="g-priv"><span id="lbl-chat-priv">He leído la <a href="${C.legal.p}" target="_blank" rel="noopener">Política de Privacidad</a> y autorizo el tratamiento de mis datos personales, incluido el envío de mis mensajes a un proveedor de IA (Google) para generar las respuestas.</span></label>
+      <button type="button" class="btn btn--red" id="g-ok" disabled>Aceptar y continuar<i>${I.arr}</i></button>
+      <p class="chat__gerr" id="g-err" role="alert" hidden></p>
+    </section>
+    <div class="chat__chips" id="chat-chips"></div>
+    <form class="chat__form" id="chat-form" autocomplete="off">
+      <input type="text" id="chat-hp" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="vh" for="chat-input">Escriba su pregunta</label>
+      <textarea id="chat-input" rows="1" maxlength="400" placeholder="Escriba su pregunta…"></textarea>
+      <button type="submit" id="chat-send" aria-label="Enviar">${I.arr}</button>
+    </form>
+    <p class="chat__fine">Asistente automático con IA: sus respuestas son orientativas. No comparta datos personales ni detalles sensibles de su caso. <a href="${C.legal.p}" target="_blank" rel="noopener">Privacidad</a> · <button type="button" class="chat__rev" id="chat-revoke">Revocar autorización</button></p>
+  </section>
+  <button type="button" class="chat__fab" id="chat-fab" aria-expanded="false" aria-controls="chat-panel" aria-label="Abrir asistente de soporte">
+    <i>${svg('<path class="chat__ic-o" d="M21 12c0 4.4-4 8-9 8a10 10 0 0 1-3.6-.7L3 21l1.5-4.2A7.6 7.6 0 0 1 3 12c0-4.4 4-8 9-8s9 3.6 9 8z"/><path class="chat__ic-o" d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/><path class="chat__ic-x" d="M6 6l12 12M18 6 6 18"/>')}</i>
+    <span class="chat__fab-t">Asistente SAG</span>
+  </button>
+</aside>`;
+
 const phead = (o) => `
 <section class="phead">
   <div class="wrap phead__grid">
@@ -587,7 +623,7 @@ const loader = `
 // Versión de la hoja de estilos y del script en la URL (?v=...): cambia sola cuando cambia el archivo, así ningún
 // navegador ni caché del servidor sigue usando una copia vieja después de una actualización.
 const ver = (f) => crypto.createHash('sha256').update(fs.readFileSync(path.join(SRC, f))).digest('hex').slice(0, 10);
-const V = { css: ver('styles.css'), js: ver('main.js') };
+const V = { css: ver('styles.css'), js: ver('main.js'), chat: ver('chat.js') };
 const url = (s) => SITE + (s === 'index' ? '' : `${s}.html`);
 const OG = { img: SITE + 'assets/img/og-sag.jpg', alt: 'SAG Assessment & Consulting. Del dato al hecho. Del hecho al dictamen.' };
 const LD = {
@@ -626,14 +662,16 @@ ${head(p.intro)}
 ${p.intro ? loader : ''}
 ${header(s)}
 <main id="contenido">${p.body()}</main>
-${footer()}
-<script src="${A('main.js')}?v=${V.js}" defer></script>
+${footer()}${p.noChat ? '' : chat()}
+<script src="${A('main.js')}?v=${V.js}" defer></script>${p.noChat ? '' : `
+<script src="${A('chat.js')}?v=${V.chat}" defer></script>`}
 </body>
 </html>`;
 
 // Página 404 (solo producción). El servidor la muestra en cualquier dirección inexistente, por ejemplo /nosotros/,
-// así que sus enlaces y recursos van desde la raíz del dominio (/assets/..., /index.html).
-const notFound = { title: 'Página no encontrada | SAG Assessment & Consulting', desc: 'La página que busca no existe o cambió de dirección.', noindex: true, body: () => `
+// así que sus enlaces y recursos van desde la raíz del dominio (/assets/..., /index.html). No lleva el chat: sus
+// servicios (api/...) son rutas relativas que desde esas direcciones no existirían.
+const notFound = { title: 'Página no encontrada | SAG Assessment & Consulting', desc: 'La página que busca no existe o cambió de dirección.', noindex: true, noChat: true, body: () => `
 ${phead({ crumb: 'Página no encontrada', h1: ['Esta página no está', '<em>en el expediente.</em>'], lead: 'Es posible que la dirección haya cambiado con el nuevo sitio. Estas son las secciones principales.' })}
 <section class="sec" style="padding-top:clamp(40px, 5vw, 72px)">
   <div class="wrap">
@@ -650,6 +688,7 @@ for (const f of ['og-sag.jpg', 'apple-touch-icon.png']) fs.copyFileSync(path.joi
 fs.cpSync(path.join(SRC, 'fonts'), path.join(OUT, 'assets/fonts'), { recursive: true });
 fs.copyFileSync(path.join(SRC, 'styles.css'), path.join(OUT, 'assets/styles.css'));
 fs.copyFileSync(path.join(SRC, 'main.js'), path.join(OUT, 'assets/main.js'));
+fs.copyFileSync(path.join(SRC, 'chat.js'), path.join(OUT, 'assets/chat.js'));
 for (const [s, p] of Object.entries(pages)) fs.writeFileSync(path.join(OUT, `${s}.html`), page(s, p));
 
 if (PROD) {

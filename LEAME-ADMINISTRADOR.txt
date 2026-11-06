@@ -13,7 +13,8 @@ ARCHIVOS-PARA-SUBIR/   El sitio completo, listo para publicar. Es un sitio está
     academy.html, contacto.html ........ las seis páginas del sitio
     404.html ........................... página para direcciones que no existen (ver paso 5)
     robots.txt, sitemap.xml ............ para los buscadores
-    assets/ ............................ estilos, script, fuentes, imágenes y video
+    assets/ ............................ estilos, scripts (sitio y asistente de chat),
+                                         fuentes, imágenes y video
 
 CONTENIDO-sha256.txt   Lista de archivos con su huella SHA-256, por si quiere
                        comprobar que todo subió completo y sin cambios.
@@ -36,7 +37,7 @@ CÓMO PUBLICAR
    o con el método que use hoy. Acepte reemplazar index.html.
 
    La carpeta assets/ se combina con la que ya existe en el servidor: se agregan los
-   estilos, el script y las fuentes nuevos. Las imágenes y el video que ya están en
+   estilos, los scripts y las fuentes nuevos. Las imágenes y el video que ya están en
    el servidor son idénticos a los del paquete.
 
 3. NO borre nada de lo que ya está en el servidor. En particular, conserve:
@@ -45,9 +46,14 @@ CÓMO PUBLICAR
      formulario de contacto enlazan a estas tres páginas.
    - css/, assets/img/logo-sag-blanco.svg y assets/img/favicon.svg: los usan
      esas tres páginas.
-   - api/ (en especial api/contact.php): el formulario de contacto nuevo envía las
-     consultas a este mismo servicio, igual que el sitio actual.
-   - js/ puede quedarse: lo usaba la página anterior y no interfiere.
+   - api/ completa, en especial:
+       api/contact.php  recibe las consultas del formulario de contacto;
+       api/chat.php     responde las preguntas del asistente de chat con IA;
+       api/consent.php  registra la autorización de privacidad del asistente.
+     El sitio nuevo usa estos mismos servicios, igual que el actual. Conserve
+     también la configuración que usen (por ejemplo, la clave del servicio de IA).
+   - js/ puede quedarse: lo usaba la página anterior (incluido el chat anterior,
+     js/chat.js) y no interfiere. El chat nuevo está en assets/chat.js.
 
 4. Si el hosting o un servicio como Cloudflare guarda caché, púrguela para que se
    vea la página nueva de inmediato.
@@ -82,6 +88,12 @@ COMPROBACIÓN DESPUÉS DE PUBLICAR (unos 5 minutos)
     y el correo debe llegar a comercial@sagconsulting.co.
     Si en vez de eso se abre el programa de correo del computador, el servidor no
     encontró api/contact.php: revise el paso 3.
+[ ] Abra el botón "Asistente SAG" (abajo a la derecha), marque las dos casillas de
+    autorización, pulse "Aceptar y continuar" y pregunte, por ejemplo:
+    "¿Quién es el socio fundador de SAG?". Debe responder con IA en pocos segundos.
+    Si contesta "Gracias por su pregunta. Para darle una respuesta precisa prefiero
+    que la atienda directamente nuestro equipo", el servicio de IA no respondió:
+    revise api/chat.php y su configuración (paso 3).
 
 ====================================================================
 CÓMO VOLVER AL SITIO ANTERIOR
@@ -94,12 +106,23 @@ nuevos pueden quedarse o borrarse: no interfieren con el sitio anterior.
 QUÉ CAMBIA FRENTE AL SITIO ACTUAL
 ====================================================================
 
-- El asistente de chat del sitio actual (js/chat.js) no está en el diseño nuevo.
+- El asistente de chat se mantiene, ahora en todas las páginas y con el diseño
+  nuevo. Funciona igual que el actual: pide la misma autorización (mismos textos y
+  versión 1.0 de los documentos), usa api/consent.php y api/chat.php, y si el
+  servicio de IA no responde contesta con respuestas preparadas e invita a escribir
+  por WhatsApp, por correo o desde el formulario.
+- Recomendado: las instrucciones que sigue la IA del asistente están en el servidor
+  (api/chat.php o su configuración), no en este paquete. Revíselas para que, si
+  mencionan secciones del sitio, usen las páginas nuevas: Experticia, Equipo,
+  Resultados, Academy y Contacto. Y para que describan SAG Academy como cursos
+  cortos sincrónicos, asincrónicos o mixtos con certificado de SAG (educación
+  informal).
 - No se publican la lista de artículos ni el enlace al Código de ética, porque esas
   direcciones hoy responden con error 404. Cuando el blog y el Código vuelvan a
   estar en línea con las mismas direcciones, se regenera el sitio con esos enlaces.
 - Fuentes, imágenes y video van incluidos: el sitio no carga nada de servicios
-  externos. Tampoco tiene herramientas de analítica (el sitio actual no las tiene).
+  externos (el asistente habla solo con el servidor de SAG, que es el que consulta
+  a la IA). Tampoco tiene herramientas de analítica (el sitio actual no las tiene).
 - Se agregaron metadatos para que el enlace se vea con imagen y descripción al
   compartirlo en LinkedIn o WhatsApp.
 
@@ -120,5 +143,5 @@ claude/intelligent-babbage-2e0yho). Después de editar el contenido:
 
 genera de nuevo la carpeta publicar/ y este mismo paquete. Para actualizar el sitio
 basta con volver a subir los archivos que cambiaron. Las páginas piden la hoja de
-estilos y el script con un número de versión que cambia cuando ellos cambian, así
+estilos y los scripts con un número de versión que cambia cuando ellos cambian, así
 que los navegadores no se quedan con una copia vieja.

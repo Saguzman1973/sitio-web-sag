@@ -380,6 +380,8 @@
   (function form() {
     var f = $('#form'); if (!f) return;
     var note = $('#form-note'), submit = $('button[type=submit]', f), endpoint = f.getAttribute('data-endpoint'), LEGAL = f.getAttribute('data-legal') || '1.0';
+    // Servicio que el visitante eligió en el asistente de chat (contacto.html?servicio=...).
+    try { var pre = new URLSearchParams(window.location.search).get('servicio'); if (pre) $$('input[name="servicio"]', f).forEach(function (r) { if (r.value === pre) r.checked = true; }); } catch (e) {}
     function setErr(field, msg) { var w = field.closest('.fld'), p = w && $('.err', w); if (w) w.classList.toggle('bad', !!msg); if (p) { p.textContent = msg || ''; p.hidden = !msg; } }
     function chkErr(id, ok, msg) { var e = $(id); e.hidden = ok; e.textContent = ok ? '' : msg; return ok; }
     function mailto(d) {

@@ -5,7 +5,7 @@ Prototipo del nuevo sitio de SAG Assessment & Consulting S.A.S. ([www.sagconsult
 Hay dos propuestas de diseño para comparar:
 
 - **Propuesta A** (`sitio/` y tema de WordPress): toma la identidad del sitio actual (logo "sag", azul profundo y cian, marfil, tipografía Archivo, imágenes, video del inicio y fotos del equipo) y la extiende a un sitio de ocho páginas.
-- **Propuesta B · "Expediente"** (`propuesta-b/`): dirección editorial distinta, con tinta, marfil y un solo acento rojo (la "bandera roja" del fraude), tipografía serif de revista y mucha más animación. Tiene seis páginas: Inicio, Experticia, Equipo, Resultados, SAG Academy y Contacto. Más detalles abajo.
+- **Propuesta B · "Expediente"** (`propuesta-b/`): dirección editorial distinta, con tinta, marfil y un solo acento rojo (la "bandera roja" del fraude), tipografía serif de revista y mucha más animación. Tiene seis páginas: Inicio, Experticia, Equipo, Resultados, SAG Academy y Contacto, y el asistente de chat del sitio actual. Más detalles abajo.
 
 > Este repositorio **no publica nada** en ningún dominio. El sitio actual no cambia hasta que se autorice la publicación.
 
@@ -25,7 +25,9 @@ Diferencias con la vista previa (`propuesta-b/`):
 - **Sin enlaces que hoy devuelven 404:** la lista de artículos y el Código de ética. Cuando vuelvan a publicarse con las mismas direcciones, cambie `BLOG_PUBLICADO` a `true` en `build-b.js` y regenere.
 - **Formulario conectado** a `api/contact.php`, el servicio que ya usa el sitio actual, con los mismos campos y respuestas: referencia al recibir la consulta, avisos ante datos inválidos (400) o demasiados envíos (429), y correo del visitante como respaldo si el servicio no existe (404, 405, 501) o no hay conexión.
 - **Para buscadores y redes:** dirección canónica, Open Graph con imagen para compartir (`src-b/og-sag.jpg`), datos estructurados de la organización, `sitemap.xml`, `robots.txt`, ícono para iPhone y una página `404.html`, que se activa con `ErrorDocument 404 /404.html` en el `.htaccess`.
-- **Caché:** las páginas piden `styles.css` y `main.js` con una versión (`?v=`) que cambia cuando cambia el archivo.
+- **Caché:** las páginas piden `styles.css`, `main.js` y `chat.js` con una versión (`?v=`) que cambia cuando cambia el archivo.
+
+El asistente de chat funciona igual en la vista previa y en producción: en el servidor usa `api/chat.php` y `api/consent.php`, y sin ellos responde con respuestas preparadas (ver "Asistente SAG" más abajo).
 
 La versión de producción no reemplaza nada del servidor salvo `index.html`: las páginas legales, `css/`, `js/` y `api/` se quedan como están. Las imágenes y el video del paquete son idénticos a los que ya están en `assets/` del servidor.
 
@@ -52,7 +54,7 @@ python3 -m http.server 8000
 | `LEAME-ADMINISTRADOR.txt`, `empaquetar.sh` | Instrucciones de publicación y script que arma el ZIP para el administrador |
 | `src/content.js` | Contenido compartido por ambas propuestas: servicios, equipo, artículos, ventajas, método y los datos pendientes |
 | `src/styles.css`, `src/main.js` | Estilos y comportamiento de la propuesta A |
-| `src-b/` | Estilos, comportamiento, fuentes (Instrument Serif, Geist, Geist Mono), puntos del mapa, imagen para compartir e ícono de la propuesta B |
+| `src-b/` | Estilos, comportamiento, asistente de chat (`chat.js`), fuentes (Instrument Serif, Geist, Geist Mono), puntos del mapa, imagen para compartir e ícono de la propuesta B |
 | `src/assets/` | Fuente Archivo, logo, imágenes, fotos del equipo y video (los usan ambas propuestas) |
 | `build.js` / `build-b.js` | Generan la propuesta A (`sitio/` y el tema) y la propuesta B (`propuesta-b/`, y `publicar/` con `--produccion`) |
 
@@ -116,6 +118,16 @@ El concepto es un expediente que se arma mientras se recorre la página: del dat
 - **Casos:** la sección está diseñada, pero su contenido queda `[PENDIENTE]`. No se inventaron resultados.
 - **Mapa:** Colombia como sede; Ecuador, México y Perú según el perfil de la CEO ("procesos liderados" en esos países).
 - **Movimiento:** con "reducir movimiento" o sin JavaScript se muestra todo el contenido, sin animaciones. Cursor propio solo con mouse.
+- **Asistente SAG (chat):** botón abajo a la derecha en las seis páginas. Lo detalla la sección siguiente.
+
+### Asistente SAG
+
+Es el asistente del sitio actual (`js/chat.js` de www.sagconsulting.co) con el diseño de la propuesta B, en `src-b/chat.js`. Conserva el funcionamiento y los textos legales:
+
+- **Autorización antes de escribir:** aviso de que usa IA de un tercero (Google), casillas de Términos y de Privacidad (versión 1.0 de los documentos) y opción de revocarla. La autorización se registra en `api/consent.php`, que devuelve un token. Sin ese servicio, queda solo en el navegador.
+- **Respuestas:** con token, cada pregunta va a `api/chat.php`, que responde con IA. La clave y las instrucciones de la IA viven en el servidor y no están en este repositorio. Si el servicio no responde, está saturado (`code: rate`) o no existe, el asistente usa respuestas preparadas (`FAQ` en `src-b/chat.js`) y ofrece WhatsApp, el formulario y el correo.
+- **Cambios frente al chat actual:** está en todas las páginas, la invitación aparece una vez por visita, y "Dejar mis datos" lleva a `contacto.html` con el servicio ya marcado en el formulario (`?servicio=...`). Las respuestas preparadas de SAG Academy y de servicios remiten a las páginas nuevas. Además, avisa a los lectores de pantalla mientras el asistente escribe.
+- **No se envía nada** sin la autorización, ni más de 400 caracteres por mensaje, ni más de 14 preguntas por conversación. El historial se guarda solo en la pestaña (`sessionStorage`).
 - **Tema de WordPress:** por ahora solo existe para la propuesta A. Si se elige la B, se puede generar igual.
 
 ## SAG Academy
@@ -130,6 +142,6 @@ El concepto es un expediente que se arma mientras se recorre la página: del dat
 - **Imágenes generadas con IA:** el inicio, la banda panorámica y la imagen de ventajas, además del video de fondo, fueron generados con inteligencia artificial. El pie de página lo indica y debe conservarse mientras se usen.
 - **Video del inicio** (`src/assets/video/hero-bg.mp4`, 1,7 MB): solo se carga en pantallas anchas, sin "reducir movimiento" y sin ahorro de datos. En móvil se ve la imagen fija.
 - **Páginas legales** (Términos, Privacidad, Cookies): el pie enlaza a las del sitio actual. Este prototipo no las incluye.
-- **Asistente SAG (chat):** el sitio actual tiene un asistente de soporte que depende de un servidor. No se incluye en el prototipo.
+- **Asistente SAG (chat):** incluido en la propuesta B; la propuesta A no lo tiene. Las instrucciones de la IA están en el servidor (`api/chat.php`): conviene revisarlas para que, si nombran secciones del sitio, usen las páginas nuevas, y para que describan SAG Academy como en la página nueva.
 - **Fuente:** Archivo va dentro del proyecto; el sitio ya no carga Google Fonts ni otros recursos externos.
 - **Visibilidad del repositorio:** contiene borradores con marcadores; se sugiere mantenerlo privado.
